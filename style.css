@@ -159,6 +159,7 @@ table {
     min-width: 600px;
     border-collapse: collapse; 
     margin: 2rem 0;
+    margin-top: 0;
     font-size: 0.95rem;
     border: 1px solid #767676;
     background-color: #ffffff;
