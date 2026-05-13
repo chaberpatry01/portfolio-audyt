@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio - Patrycja Chaberska - Tester</title>
+	<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/svg+xml" href="favicon.svg">
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="manifest" href="site.webmanifest">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<nav class="skip-links">
+        <a href="#tresc" class="skip-link">Przejdź do głównej treści</a>
+        <a href="#kontakt" class="skip-link">Przejdź do kontaktu</a>
+    </nav>
+	<header class="header-full">
+		<div class="logo-group">
+			<img src="assets/pc_logo.png" alt="Logo Patrycja Chaberska" class="logo" width="60">
+			<h1 id="main">Portfolio testowe dla platformy e-commerce wlep.pro- analiza wymagań i projektowanie testów
+			</h1>
+		</div>
+	</header>
+
+	<nav class="nav-full">
+		<div class="list">
+			<h2>Spis treści:</h2>
+			<ol>
+				<li> <a href="#wstep">Wstęp</a></li>
+				<li> <a href="#analiza">Analiza wymagań i projektowanie danych testowych</a></li>
+				<li> <a href="#scenariusze">Scenariusze testowe</a></li>
+				<li> <a href="#przypadki">Przypadki testowe</a></li>
+				<li> <a href="#bledy">Raportowanie błędów</a></li>
+				<li> <a href="#raport">Analiza wyników i raport końcowy projektu</a></li>
+				<li> <a href="#audyt">Audyt dostępności cyfrowej witryny www.pm.waw.pl wg. standardu WCAG 2.1</a></li>
+				<li> <a href="#zrodla">Źródła/metodyka i narzędzia</a></li>
+			</ol>
+		</div>
+	</nav>
+
+	<main id="tresc">
+		<section>
+			<h2 id="wstep">Wstęp</h2>
+			<p>Projekt przygotowałam na podstawie konsultacji, którą przeprowadziliśmy z właścicielem produktu, w wyniku
+				których powstała analiza wymagań. Pomysłem na projekt było pokazanie istoty testowania produktu
+				na jak najwcześniejszym etapie jego rozwoju, w celu uniknięcia błędów, oszczędności czasu na
+				naprawę usterek oraz uniknięcia opóźnień w dostarczeniu gotowego produktu do klientów.</p>
+			<p>Na podstawie dostarczonych wymagań przygotowałam: User Stories, analizę testową, scenariusze i przypadki
+				testowe oraz raportowanie defektów. Wyniki i raporty z testów są symulacją, mającą na celu
+				zaprezentowanie moich umiejętności dokumentowania w procesie testowym. Dokument będzie stale
+				aktualizowany wraz z kolejnymi funkcjonalnościami wprowadzanymi na stronie.</p>
+			<p>Testy były wykonywane na środowisku testowym:</p>
+			<ul>
+				<li>Urządzenia: MacBook Air (13,3''), iPhone 15.</li>
+				<li>System operacyjny: macOS Big Sur (wersja 11.7.10), iOS 26.2.1.</li>
+				<li>Przeglądarka internetowa: Google Chrome (wersja 138.0.7204.184).</li>
+			</ul>
+		</section>
+
+		<section>
+			<h2 id="analiza">Analiza wymagań i projektowanie danych testowych</h2>
+			<p>Na podstawie konsultacji z właścicielami produktu, wyodrębniłam kluczowy dla klientów obszar testowy
+				(Epiki), który opisałam za pomocą User Story i kryteriów akceptacji.</p>
+			<h3>Moduł koszyka</h3>
+			<ul>
+				<li>User story: Jako użytkownik sklepu wlep.pro, chcę mieć możliwość
+					zarządzania koszykiem, żeby móc sfinalizować zamówienie.</li>
+				<li>
+					<p>Kryteria akceptacji AC1:</p>
+					<ul>
+						<li>system musi umożliwiać zmianę każdego produktu w koszyku, a suma musi zostać zaktualizowana;
+						</li>
+						<li>system musi przetwarzać i weryfikować kody rabatowe, wartość kuponu musi być odjęta w polu
+							"Rabat";</li>
+						<li>system musi poprawnie przeliczać sumę brutto zamówienia z uwzględnieniem VAT;</li>
+						<li>system musi automatycznie aktywować darmową dostawę (0,00 zł), jeśli wartość zamówienia
+							przekroczy 150,00 zł. W podsumowaniu musi pojawić się komunikat "Darmowa dostawa od 150 zł";
+						</li>
+						<li>system musi zbierać dane potrzebne do zamówienia, w tym walidować pola e-mail i kod
+							pocztowy;</li>
+						<li>finalizacja zamówienia musi wymagać zaakceptowania Regulaminu.</li>
+					</ul>
+				</li>
+			</ul>
+			<div class="table-container">
+				<table tabindex="0">
+					<caption><b>Tabela 1:</b> Techniki testowania</caption>
+					<thead>
+						<tr>
+							<th scope="col">Obiekt/moduł</th>
+							<th scope="col">Test</th>
+							<th scope="col">Dane testowe/opis</th>
+							<th scope="col">ID Scenariusza/przypadku testowego</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td rowspan="3">Darmowa dostawa</td>
+							<td rowspan="3">Klasy równoważności EP i wartości brzegowych (BVA)</td>
+							<td>Klasa: darmowa dostawa: 150,00 zł, 150,01 zł</td>
+							<td rowspan="3">
+								<a href="#st1">Scenariusz Testowy 1</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Klasa: płatna dostawa: 149,99 zł</td>
+						</tr>
+						<tr>
+							<td>Wartość brzegowa: pusty koszyk 0 zł</td>
+						</tr>
+						<tr>
+							<td>Zarządzanie koszykiem</td>
+							<td>Przejścia pomiędzy stanami (State Transition Testing)</td>
+							<td>[Pusty] - Dodanie - [W koszyku] - Edycja ilości - [Zaktualizowany] - Usuń - [Pusty]</td>
+							<td>
+								<a href="#st2">Scenariusz Testowy 2</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Proces zakupowy</td>
+							<td>Testowanie przypadków użycia (Use Case Test)</td>
+							<td>Scenariusz główny (Happy Path) oraz scenariusze alternatywne</td>
+							<td>
+								<a href="#st3">Scenariusz Testowy 3</a>
+							</td>
+						</tr>
+						<tr>
+							<td>Proces zakupowy na urządzeniu mobilnym</td>
+							<td>Testowanie oparte na listach kontrolnych (Checklist-based testing)</td>
+							<td>Testy niefunkcjonalne użyteczności i responsywności w oparciu o listę kontrolną dobrych
+								praktyk
+								projektowania.</td>
+							<td>
+								<a href="#pt13">Przypadek Testowy 13</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<section>
+			<h2 id="scenariusze">Scenariusze testowe</h2>
+			<p>W tym rozdziale chciałabym zaprezentować proces projektowania scenariuszy testowych (ST).
+				Mogą one być tworzone w zależności od kontekstu biznesowego (np. kluczowy dla klienta moduł koszyka)
+				oraz etapu cyklu życia oprogramowania.
+				Zastosowanie różnych poziomów szczegółowości pozwala dopasować scenariusze do różnych modeli pracy
+				zespołu.</p>
+			<p>Scenariusze stanowią uniwersalny i uporządkowany szablon weryfikujący funkcjonalności modułu koszyka.
+				Połączenie podejść wysokopoziomowego, procesowego end-to-end oraz opartego na przypadkach użycia
+				zapewnia
+				wielowymiarowe spojrzenie na moduł koszyka.</p>
+
+			<article>
+				<h3 id="st1">ST-1: Weryfikacja kosztów dostawy</h3>
+				<p>Przypadki testowe zostały zaprojektowane jako testy wysokiego poziomu (High-level), co umożliwia
+					wykorzystanie ich na różnych etapach wytwarzania oprogramowania. Przykładowo, Przypadek Testowy 03
+					można dopasować
+					do najniższej ceny produktu, gdy asortyment zostanie wprowadzony do sklepu, aby przetestować
+					precyzyjnie dolną granicę dostawy. W dalszej fazie projektu, scenariusz zostanie rozbudowany o
+					weryfikację w oparciu o ceny realnych produktów, naliczanie gratisów oraz integrację z kuponami
+					zniżkowymi.</p>
+				<div class="table-container">
+					<table tabindex="0">
+						<caption><b>Tabela 2:</b> Przypadki testowe wysokiego poziomu dla ST-1</caption>
+						<thead>
+							<tr>
+								<th scope="col">ID przypadku testowego</th>
+								<th scope="col">Nazwa</th>
+								<th scope="col">Dane testowe</th>
+								<th scope="col">Opis</th>
+								<th scope="col">Oczekiwany rezultat</th>
+								<th scope="col">Status pass/fail</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td id="pt01">
+									<abbr title="Przypadek Testowy 1">PT-01</abbr>
+								</td>
+								<td>Weryfikacja powyżej progu darmowej dostawy</td>
+								<td>Kwota &gt; 150 zł</td>
+								<td>Symulacja zakupu przy wartości koszyka powyżej progu darmowej dostawy.</td>
+								<td>Koszt dostawy 0 zł.</td>
+								<td>N/A</td>
+							</tr>
+							<tr>
+								<td id="pt02">
+									<abbr title="Przypadek Testowy 2">PT-02</abbr>
+								</td>
+								<td>Weryfikacja na progu darmowej dostawy</td>
+								<td>Kwota = 150,00 zł</td>
+								<td>Symulacja zakupu przy wartości koszyka na progu darmowej dostawy.</td>
+								<td>Koszt dostawy 0 zł.</td>
+								<td>N/A</td>
+							</tr>
+							<tr>
+								<td id="pt03">
+									<abbr title="Przypadek Testowy 3">PT-03</abbr>
+								</td>
+								<td>Weryfikacja poniżej progu darmowej dostawy</td>
+								<td>Kwota &lt; 150 zł</td>
+								<td>Weryfikacja czy można złożyć zamówienie poniżej progu darmowej dostawy, czy są
+									możliwe
+									opcje wyboru dostawy.</td>
+								<td>Płatna dostawa, komunikat w podsumowaniu "Darmowa dostawa od 150 zł".</td>
+								<td>N/A</td>
+							</tr>
+							<tr>
+								<td id="pt04">
+									<abbr title="Przypadek Testowy 4">PT-04</abbr>
+								</td>
+								<td>Próba finalizacji zamówienia dla wartości 0 zł</td>
+								<td>Kwota = 0 zł</td>
+								<td>Próba sfinalizowania zamówienia przy pustym koszyku.</td>
+								<td>Nie można sfinalizować zamówienia, wyświetla się informacja "pusty koszyk" lub
+									przycisk
+									&lt;Dalej&gt; jest nieaktywny.</td>
+								<td>N/A</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</article>
+
+			<article>
+				<h3 id="st2">ST-2: Cykl życia produktu w koszyku</h3>
+				<p>Scenariusz Testowy 2 opiera się na technice przejść pomiędzy stanami, pokazuje cykl życia obiektu
+					"Koszyk"- od stanu pustego, przez modyfikację, aż po powrót do stanu wyjściowego. Takie podejście
+					pozwala na sprawdzenie logiki systemu poprawności przejść oraz poprawnego przeliczania wartości
+					zamówienia. Pozwala również ocenić, czy proces od początku do końca działa spójnie i spełnia swoją
+					funkcjonalność.</p>
+				<div class="table-container">
+					<table tabindex="0">
+						<caption><b>Tabela 3:</b> Scenariusz Testowy 2 jako logiczny powiązany zbiór przypadków
+							testowych
+							end-to-end.</caption>
+						<thead>
+							<tr>
+								<th scope="col">ID przypadku testowego</th>
+								<th scope="col">Nazwa</th>
+								<th scope="col">Warunki wstępne</th>
+								<th scope="col">Kroki</th>
+								<th scope="col">Oczekiwane rezultaty</th>
+								<th scope="col">Warunki końcowe</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td id="pt05">
+									<abbr title="Przypadek Testowy 5">PT-05</abbr>
+								</td>
+								<td>Dodanie produktu do koszyka</td>
+								<td>Wyświetlona strona wybranego produktu.</td>
+								<td>
+									<ol>
+										<li>Kliknięcie w przycisk &lt;Dodaj do koszyka&gt;.</li>
+									</ol>
+								</td>
+								<td>Pojawia się komunikat "Dodano do koszyka".</td>
+								<td>Produkt znajduje się w koszyku.</td>
+							</tr>
+							<tr id="pt06">
+								<td>
+									<abbr title="Przypadek Testowy 6">PT-06</abbr>
+								</td>
+								<td>Przejście do widoku koszyka</td>
+								<td>Produkt znajduje się w koszyku.</td>
+								<td>
+									<ol>
+										<li>Kliknięcie w ikonę koszyka.</li>
+										<li>Wybranie opcji &lt;Zobacz produkty w koszyku&gt;.</li>
+									</ol>
+								</td>
+								<td>Wyświetlona zostaje strona z wybranym produktem w koszyku.</td>
+								<td>Wyświetlona strona koszyka.</td>
+							</tr>
+							<tr>
+								<td id="pt07">
+									<abbr title="Przypadek Testowy 7">PT-07</abbr>
+								</td>
+								<td>Zwiększenie liczby sztuk produktu</td>
+								<td>Wyświetlona strona koszyka; min. 1 produkt w koszyku.</td>
+								<td>
+									<ol>
+										<li>Kliknięcie znaku "+" przy wybranym produkcie.</li>
+									</ol>
+								</td>
+								<td>Zaktualizowana liczba sztuk produktów w koszyku i ceny końcowej; pojawia się
+									komunikat o
+									zmianie.</td>
+								<td>Ilość produktu zwiększona.</td>
+							</tr>
+							<tr>
+								<td id="pt08">
+									<abbr title="Przypadek Testowy 8">PT-08</abbr>
+								</td>
+								<td>Zmniejszenie liczby sztuk produktu</td>
+								<td>W koszyku znajduje się więcej niż 1 sztuka produktu.</td>
+								<td>
+									<ol>
+										<li>Kliknięcie znaku "-" przy wybranym produkcie.</li>
+									</ol>
+								</td>
+								<td>Zaktualizowana liczba sztuk produktów w koszyku i ceny końcowej; pojawia się
+									komunikat o
+									zmianie.</td>
+								<td>Ilość produktu zmniejszona.</td>
+							</tr>
+							<tr>
+								<td id="pt09">
+									<abbr title="Przypadek Testowy 9">PT-09</abbr>
+								</td>
+								<td>Całkowite usunięcie produktów z koszyka</td>
+								<td>Produkt znajduje się w koszyku.</td>
+								<td>
+									<ol>
+										<li>Kliknięcie w przycisk &lt;Usuń wszystkie produkty&gt;.</li>
+										<li>W oknie "Usuwanie wszystkich produktów z koszyka" kliknięcie w przycisk
+											&lt;Usuń
+											wszystkie produkty&gt;.</li>
+									</ol>
+								</td>
+								<td>Produkty zostają usunięte; wyświetla się komunikat potwierdzający; wartość koszyka
+									wynosi 0,00 zł.</td>
+								<td>Koszyk jest pusty.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</article>
+
+			<article>
+				<h3 id="st3">ST-3: Przypadki użycia</h3>
+				<p>Celem stworzenia scenariusza opartego na przypadkach użycia, było przetestowanie całego procesu
+					zakupowego. Scenariusz główny (Happy Path) przedstawiający najczęściej wybieraną opcję przez
+					klientów: zakup przez użytkownika niezalogowanego, z opcją płatnej dostawy. Weryfikuje, czy
+					konkretne kroki prowadzą do zamierzonego, pozytywnego dla użytkownika zakończenia. Scenariusz
+					zostanie uzupełniony o dodatkowe sytuacje wyjątkowe i obsługę błędów.</p>
+				<div class="table-container">
+					<table tabindex="0">
+						<caption><b>Tabela 4:</b> Scenariusz testowy 3 jako zbiór przypadków użycia- obejmuje scenariusz
+							główny,
+							sytuacje alternatywne i obsługę błędów.</caption>
+						<thead>
+							<tr>
+								<th scope="col">ID przypadku testowego</th>
+								<th scope="col">Nazwa</th>
+								<th scope="col">Warunki wstępne</th>
+								<th scope="col">Warunki końcowe</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<a href="#pt10">
+										<abbr title="Przypadek Testowy 10">PT-10</abbr>
+									</a>
+								</td>
+								<td>Proces zakupowy dla niezalogowanego użytkownika (płatna dostawa)</td>
+								<td>Użytkownik nieposiadający konta.</td>
+								<td>Poprawnie złożone zamówienie; widoczny ekran podsumowania zamówienia.</td>
+							</tr>
+							<tr>
+								<td id="pt11">
+									<abbr title="Przypadek Testowy 11">PT-11</abbr>
+								</td>
+								<td>Proces zakupowy z utworzeniem konta (płatna dostawa)</td>
+								<td>Użytkownik nieposiadający konta.</td>
+								<td>Poprawnie złożone zamówienie; konto zostało utworzone.</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#pt12">
+										<abbr title="Przypadek Testowy 12">PT-12</abbr>
+									</a>
+								</td>
+								<td>Walidacja kodu pocztowego- format niezgodny ze wzorcem 00-000</td>
+								<td>Produkt w koszyku; otwarty formularz dostawy.</td>
+								<td>Blokada złożenia zamówienia - walidacja przy polu kodu pocztowego.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</article>
+		</section>
+
+		<section>
+			<h2 id="przypadki">Przypadki testowe</h2>
+			<article>
+				<h3 id="pt10"><abbr title="Przypadek Testowy 10">PT-10: </abbr>Scenariusz główny</h3>
+				<div class="table-container">
+					<table tabindex="0">
+						<caption><b>Tabela 5:</b> Przypadek testowy 10 - linearny scenariusz główny zakończony sukcesem.
+						</caption>
+						<thead>
+							<tr>
+								<th scope="col">Atrybut</th>
+								<th scope="col" colspan="2">Szczegóły</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Nazwa</th>
+								<td colspan="2">Proces zakupowy dla niezalogowanego użytkownika (płatna dostawa)</td>
+							</tr>
+							<tr>
+								<th scope="row">Opis</th>
+								<td colspan="2">Przypadek testowy na podstawie przypadku użycia scenariusza głównego,
+									ścieżka pozytywna, pokryte kroki 1-7.</td>
+							</tr>
+							<tr>
+								<th scope="row">Warunki wstępne</th>
+								<td colspan="2">Użytkownik znajduje się na stronie <b>www.wlep.pro</b>; w koszyku
+									znajduje się dowolny produkt; suma koszyka nie przekracza 150,00 zł (warunek
+									darmowej
+									dostawy).</td>
+							</tr>
+							<tr>
+								<th scope="row">Aktorzy</th>
+								<td colspan="2">Niezalogowany użytkownik, system wlep.pro.</td>
+							</tr>
+							<tr>
+								<th scope="col">Lp.</th>
+								<th scope="col">Kroki użytkownika</th>
+								<th scope="col">Oczekiwane rezultaty systemu</th>
+							</tr>
+
+							<tr>
+								<th scope="row">1.</th>
+								<td>Klika w ikonę koszyka.</td>
+								<td>Wyświetla panel boczny z opcjami podglądu zamówienia.</td>
+							</tr>
+							<tr>
+								<th scope="row">2.</th>
+								<td>Wybiera opcję &lt;Dostawa i płatność&gt;.</td>
+								<td>Wyświetla stronę z formularzem zamówienia.</td>
+							</tr>
+							<tr>
+								<th scope="row">3.</th>
+								<td>Uzupełnia pola w sekcji "Dane zamówienia" poprawnymi danymi.</td>
+								<td>Waliduje na bieżąco poprawność pól.</td>
+							</tr>
+							<tr>
+								<th scope="row">4.</th>
+								<td>Wybiera dostawę "InPost Paczkomaty 24/7".</td>
+								<td>Wyświetla mapę punktów odbioru i aktualizuje sumę kosztów dostawy.</td>
+							</tr>
+							<tr>
+								<th scope="row">5.</th>
+								<td>Wybiera metodę płatności "Gotówka".</td>
+								<td>Podświetla wybraną opcję "Gotówka".</td>
+							</tr>
+							<tr>
+								<th scope="row">6.</th>
+								<td>Wybiera wymagane zgody w "Zgody i pola dodatkowe".</td>
+								<td>Podświetla wybrane checkboxy zgód.</td>
+							</tr>
+							<tr>
+								<th scope="row">7.</th>
+								<td>Klika w przycisk &lt;Zamawiam i płacę&gt;.</td>
+								<td>Przekierowuje do strony złożonego zamówienia z sukcesem.</td>
+							</tr>
+							<tr>
+								<th scope="row">Warunki końcowe</th>
+								<td colspan="2">Poprawnie sfinalizowany zakup; zostaje wyświetlona strona z
+									podsumowaniem
+									zamówienia; na adres mailowy zostaje wysłany mail z potwierdzeniem zamówienia;
+									koszyk
+									jest pusty.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</article>
+
+			<article>
+				<h3 id="pt12"><abbr title="Przypadek Testowy 12">PT-12: </abbr>Walidacja kodu pocztowego – format
+					niezgodny ze wzorcem 00-000</h3>
+				<p><b>Wideo 1: </b>Dokumentacja przypadku testowego PT-12 w systemie Xray. Przykład obsługi
+					błędu. Zobacz powiązany błąd:
+					<a href="#bug01">BUG-01: Brak walidacji formatu kodu pocztowego</a>.
+				</p>
+				<video controls preload="metadata" poster="miniatura.png" aria-describedby="video-description">
+					<source src="assets/nagranie_walidacja_kodu.mp4" type="video/mp4">
+				</video>
+				<p id="video-description"><b>Opis wideo 1:</b> Nagranie przedstawia konfigurację testu manualnego w
+					systemie
+					Xray. Dokumentacja zawiera 10 kroków testowych, w tym szczegółowe dane wejściowe (imię, nazwisko,
+					numer telefonu)
+					oraz precyzyjnie określony rezultat oczekiwany dla negatywnego scenariusza walidacji kodu
+					pocztowego.</p>
+			</article>
+
+			<article>
+				<h3 id="pt13">PT-13: Weryfikacja responsywności (RWD)</h3>
+				<div class="table-container">
+					<table tabindex="0">
+						<caption><b>Tabela 6:</b> Przykład przypadku testowego jako karty dla testów eksploracyjnych,
+							która
+							posłuży
+							do przyszłych sesji.</caption>
+						<tbody>
+							<tr>
+								<th scope="row">Opis i cel:</th>
+								<td colspan="4">Weryfikacja responsywności, poprawności wyświetlania interfejsu oraz
+									użyteczności strony głównej i modułu koszyka na urządzeniach mobilnych.</td>
+							</tr>
+							<tr>
+								<th scope="row">Oczekiwany rezultat:</th>
+								<td colspan="4">
+									<ul>
+										<li>Elementy i treść strony są dostosowane do rozmiaru ekranu.</li>
+										<li>Widoczne i poprawnie działające menu "hamburger".</li>
+										<li>Intuicyjność nawigacji.</li>
+										<li>Przyciski i linki łatwe do kliknięcia (odpowiedni rozmiar pól dotykowych
+											min.
+											44x44 px).</li>
+										<li>Poprawne skalowanie obrazów i optymalny czas ładowania.</li>
+									</ul>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">Warunki wstępne:</th>
+								<td colspan="4">Uruchomiona przeglądarka z trybem narzędzi deweloperskich; dostęp do
+									urządzenia mobilnego z dotykowym wyświetlaczem.</td>
+							</tr>
+							<tr>
+								<th scope="col">Typ testu</th>
+								<th scope="col">Data</th>
+								<th scope="col">Urządzenie</th>
+								<th scope="col">Wynik</th>
+								<th scope="col">Uwagi</th>
+							</tr>
+							<tr>
+								<td>Mobilny</td>
+								<td>05.01.26</td>
+								<td>iPhone 15</td>
+								<td>PASS</td>
+								<td>Sugestia: redundancja ikony "hamburger menu", która znajduje się równocześnie w
+									lewym górnym rogu
+									(Header) oraz na dolnym pasku nawigacyjnym. Zaleca się pozostawienie jednej ikony
+									dla
+									zachowania wizualnej spójności aplikacji.</td>
+							</tr>
+							<tr>
+								<th scope="row">Podsumowanie sesji:</th>
+								<td colspan="4">Testy potwierdziły responsywność głównej strony i modułu koszyka.
+									Aplikacja
+									działa płynnie, jej elementy poprawnie się skalują, jednak znaleziono pole do
+									optymalizacji, które zostało zgłoszone jako sugestia do poprawy.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<figure>
+					<img src="assets/weryfikacja_responsywnosci.png"
+						alt="Zrzuty ekranu porównujące widok desktopowy z mobilnym. Wersja mobilna pokazuje adaptację układu strony i obecność menu hamburger.">
+					<figcaption><b>Rysunek 1:</b> Weryfikacja widoku RWD (Desktop vs Mobile) dla strony głównej.
+					</figcaption>
+				</figure>
+			</article>
+		</section>
+
+		<section>
+			<h2 id="bledy">Raportowanie błędów</h2>
+			<article>
+				<h3 id="bug01"><abbr title="Błąd 1">BUG-01: </abbr>Brak walidacji formatu kodu pocztowego</h3>
+				<p>
+					Poniższy defekt został wykryty podczas realizacji przypadku testowego <a href="#pt12">PT-12
+					</a>(scenariusz negatywny).
+					Mimo że formularz posiada mechanizm walidacji i system blokuje zamówienie, nie wskazuje on
+					natychmiast dokładnego miejsca, w którym popełniono błąd (defekt użyteczności/UX).
+					Użytkownik, który nie widzi, gdzie i jaką pomyłkę zrobił, może opuścić koszyk i nie dokonać zakupu.
+					Istnieje również wysokie prawdopodobieństwo, że taki klient nie powróci już do sklepu.</p>
+				<figure>
+					<img src="assets/bug01_mantis.png"
+						alt="Zrzut ekranu z systemu Mantis przedstawiający zgłoszenie błędu BUG-01. Widoczne sekcje: Opis, Kroki, Wynik rzeczywisty i oczekiwany oraz status 'przypisany'.">
+					<figcaption><b>Rysunek 2:</b> Raportowanie błędu z wykorzystaniem platformy Mantis.</figcaption>
+				</figure>
+				<figure class="figure-bug">
+					<img src="assets/wskazanie_buga.png"
+						alt="Zrzut ekranu formularza zamówienia. Ramka wskazuje ogólny błąd, a druga ramka wskazuje pole Kodu pocztowego z błędną wartością.">
+					<figcaption><b>Rysunek 3:</b> Wizualizacja defektu dołączona do zgłoszonego błędu <a
+							href="#bug01">BUG-01.</a></figcaption>
+				</figure>
+			</article>
+		</section>
+
+		<section>
+			<h2 id="raport">Analiza wyników i raport końcowy projektu</h2>
+			<article>
+				<h3>Statystyki wykonanych testów dla modułu koszyka</h3>
+				<figure class="figure-graph">
+					<img src="assets/wykres_koncowy.png"
+						alt="Wykres kołowy przedstawiający statusy testów: 38% zaliczonych (PASS), 54% błędów (FAIL) oraz 8% nieprzetestowanych (NOT TESTED).">
+					<figcaption><b>Rysunek 4:</b> Procentowy rozkład statusów wykonanych testów.
+						<details>
+							<summary>Pokaż dane tabelaryczne</summary>
+							<div class="table-container">
+								<table>
+									<thead>
+										<tr>
+											<th scope="col">Status</th>
+											<th scope="col">Wynik wyrażony w %</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">PASS</th>
+											<td>38%</td>
+										</tr>
+										<tr>
+											<th scope="row">FAIL</th>
+											<td>54%</td>
+										</tr>
+										<tr>
+											<th scope="row">NOT TESTED</th>
+											<td>8%</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</details>
+					</figcaption>
+				</figure>
+			</article>
+
+			<article>
+				<h3>Tabela wyników</h3>
+				<div class="table-container">
+					<table tabindex="0">
+						<caption><b>Tabela 7: </b>Zestawienie wyników z wykonania testów z dnia 10.01.2026.</caption>
+						<thead>
+							<tr>
+								<th scope="col">Przypadek testowy</th>
+								<th scope="col">Status</th>
+								<th scope="col">Wynik/uwagi</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">
+									<a href="#pt01">PT-01 </a>Weryfikacja powyżej progu darmowej dostawy
+								</th>
+								<td>PASS</td>
+								<td>Darmowa dostawa; zweryfikowano dla kwoty 170 zł.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt02">PT-02 </a>Weryfikacja na progu darmowej dostawy
+								</th>
+								<td>NOT TESTED</td>
+								<td>Brak możliwości sprawdzenia wartości na progu 150 zł przy obecnym asortymencie.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt03">PT-03 </a>Weryfikacja poniżej progu darmowej dostawy
+								</th>
+								<td>FAIL</td>
+								<td>Błąd: system nie nalicza kosztów dostawy; brak komunikatu w podsumowaniu "Darmowa
+									dostawa od 150 zł"; zweryfikowano dla kwoty 136 zł.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt04">PT-04 </a>Próba finalizacji zamówienia dla wartości 0 zł
+								</th>
+								<td>FAIL</td>
+								<td>Błąd krytyczny: możliwość złożenia zamówienia przy pustym koszyku.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt05">PT-05 </a>Dodanie produktu do koszyka
+								</th>
+								<td>PASS</td>
+								<td>Produkt poprawnie dodany do koszyka.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt06">PT-06 </a>Przejście do widoku koszyka
+								</th>
+								<td>PASS</td>
+								<td>Poprawne przekierowanie do widoku koszyka.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt07">PT-07 </a>Zwiększenie liczby sztuk produktu
+								</th>
+								<td>FAIL</td>
+								<td>Cena i ilość zostają poprawnie zaktualizowane; brak komunikatu o aktualizacji- błąd
+									o
+									niskim priorytecie.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt08">PT-08 </a>Zmniejszenie liczby sztuk produktu
+								</th>
+								<td>FAIL</td>
+								<td>Cena i ilość zostają poprawnie zaktualizowane; brak komunikatu o aktualizacji- błąd
+									o
+									niskim priorytecie.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt09">PT-09 </a>Całkowite usunięcie produktów z koszyka
+								</th>
+								<td>PASS</td>
+								<td>Koszyk poprawnie wyczyszczony.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt10">PT-10 </a>Proces zakupowy dla niezalogowanego użytkownika (płatna
+									dostawa)
+								</th>
+								<td>FAIL</td>
+								<td>Błąd krytyczny: system nie nalicza kosztów dostawy.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt11">PT-11 </a>Proces zakupowy z utworzeniem konta (płatna dostawa)
+								</th>
+								<td>FAIL</td>
+								<td>Konto zostaje utworzone; system nie nalicza kosztów dostawy.</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt12">PT-12 </a>Walidacja kodu pocztowego- format niezgodny ze wzorcem
+									00-000
+								</th>
+								<td>FAIL</td>
+								<td>System blokuje złożenie zamówienia, ale nie waliduje poprawnie pola "Kod pocztowy"
+									(<a href="#bug01" title="Zobacz raport błędu"
+										aria-label="Przejdź do szczegółowego raportu błędu BUG-01">BUG-01</a>).
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<a href="#pt13">PT-13 </a>Weryfikacja responsywności (RWD)
+								</th>
+								<td>PASS</td>
+								<td>Poprawne skalowanie na urządzeniach mobilnych.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</article>
+
+			<article>
+				<h3>Wnioski- ocena, rekomendacja, ryzyko</h3>
+				<p>Główny moduł koszyka jest stabilny, pozwala na poprawne dodawanie produktów do koszyka i ich
+					modyfikację oraz finalizację zamówienia. Interfejs sklepu jest czytelny i poprawnie skaluje się na
+					urządzeniach mobilnych. Kilka funkcji wymaga dopracowania pod względem użyteczności (UX), w zakresie
+					wyświetlania komunikatów potwierdzających akcję użytkownika i walidacji pól formularza.</p>
+				<h4>Zidentyfikowane ryzyka:</h4>
+				<ul>
+					<li>Finansowe- błąd krytyczny- brak naliczania kosztów dostawy i spełnienia wymaganej logiki
+						biznesowej- darmowa dostawa od 150 zł, powoduje to straty finansowe przy każdej transakcji
+						niespełniającej tego wymagania.</li>
+					<li>Techniczne- możliwość składania zamówienia o wartości 0 zł (pusty koszyk) stwarza pole do
+						nadużyć. Może prowadzić do niepotrzebnego kumulowania się pustych zamówień, które będzie
+						mogło obciążać bazę danych i generować puste rekordy.</li>
+				</ul>
+				<h4>Rekomendowane jest:</h4>
+				<ul>
+					<li>Naprawa defektów o priorytecie krytycznym: poprawka dotycząca logiki biznesowej (zobacz <a
+							href="#pt10">PT-10</a> oraz <a href="#pt11">PT-11</a> ) &ldquo;Darmowa
+						dostawa od 150 zł&rdquo;: poprawne naliczanie kosztów dostawy i blokowanie pustych zamówień.
+					</li>
+					<li>Rozszerzenie funkcjonalności: wprowadzenie możliwości płacenia kartą lub bramek płatniczych,
+						pozwala to przetestować ich integracje z systemem na wczesnym etapie, aby zmniejszyć ryzyko
+						regresji w momencie wdrożenia sklepu.</li>
+					<li>Poprawa walidacji: pola &ldquo;Kod pocztowy&rdquo; oraz ponowna analiza pozostałych
+						formularzy pod kątem wprowadzanych danych.</li>
+				</ul>
+			</article>
+		</section>
+
+		<section>
+			<section>
+				<h2 id="audyt">Audyt dostępności cyfrowej podstrony wyszukiwania: Pałac Młodzieży w Warszawie wg
+					standardu WCAG 2.1</h2>
+
+				<h3>Wstęp</h3>
+				<p>
+					W ramach doskonalenia kompetencji w obszarze dostępności cyfrowej, przeprowadziłam manualną
+					weryfikację struktury nagłówków oraz walidację przy użyciu narzędzia automatycznego WAVE na
+					podstronie
+					<a href="https://www.pm.waw.pl/szukaj" target="_blank" rel="noopener noreferrer"
+						title="Przejdź do testowanej podstrony (otwiera się w nowej karcie)">wyszukiwania Pałacu
+						Młodzieży</a>.
+					Badanie zrealizowałam w oparciu o wytyczne <strong>WCAG 2.1 na poziomie A i AA</strong>, stosując
+					metodologię <strong>WCAG-EM</strong>.
+					Analizę wykonałam metodą manualną (w oparciu o autorską listę kontrolną) oraz przy wsparciu narzędzi
+					automatycznych.
+				</p>
+
+				<p>
+					<em>Informacja: Dokumentacja techniczna błędów jest dostępna w <a href="#zalaczniki">Załącznikach</a>.
+						Projekt będzie sukcesywnie uzupełniany o wyniki kolejnych etapów badania: testy czytnikiem
+						ekranu VoiceOver oraz testy funkcjonalne.</em>
+				</p>
+
+				<h3>Metryka badania:</h3>
+				<ul>
+					<li><b>Data badania:</b> 22.04.2026 r.</li>
+					<li><b>Badany obiekt:</b> Pałac Młodzieży w Warszawie, podstrona <a
+							href="https://www.pm.waw.pl/szukaj" target="_blank"
+							rel="noopener noreferrer">wyszukiwania.</a></li>
+					<li><b>Zakres audytu:</b> Struktura semantyczna nagłówków, etykiety pól formularzy, kontrast treści.
+					</li>
+					<li><b>Metodologia:</b> WCAG-EM (WCAG 2.1 na poziomie A oraz AA).</li>
+					<li><b>Audytor:</b> Patrycja Chaberska</li>
+					<li><b>Narzędzia:</b> WAVE Accessibility Evaluation Tool, ARC Toolkit, Colour Contrast Analyser, W3C
+						Validator.</li>
+					<li><b>Środowisko testowe:</b> Google Chrome (Wersja 138.0.7204.184).</li>
+				</ul>
+			</section>
+
+			<h3>Metody badawcze:</h3>
+			<ul>
+				<li><b>Testy automatyczne:</b> WAVE Accessibility Evaluation Tool (automatyczna analiza strony), ARC
+					Toolkit (wyróżnienie nagłówków), W3C Validator (poprawność kodu).</li>
+				<li><b>Testy manualne:</b> Sprawdzanie kontrastu, weryfikacja struktury semantycznej kodu, nawigacja
+					klawiaturą, powiększenie strony (reflow).</li>
+			</ul>
+
+			<h3>Wyniki oceny dostępności:</h3>
+
+			<h4>Szczegółowa analiza zgodności</h4>
+			<p>Dla każdego wykrytego problemu podano szczegóły, wskazane kryterium WCAG, opis problemu, jego
+				wpływ na użytkowników oraz rekomendacje naprawcze.</p>
+			<p>Poniższe zestawienie stanowi podsumowanie kluczowych błędów dostępności: semantyki nagłówków oraz
+				wykrytych błędów badaniem automatycznym.</p>
+
+			<div class="analiza-zgodnosci">
+				<h5>Problem 1: Brak dostępności klawiaturowej menu rozwijanego oraz fokusa na ukrytych elementach.</h5>
+				<p>Naruszone Kryterium WCAG: 2.1.1 Klawiatura (A), 2.4.7 Widoczny fokus (AA), 1.4.13 Treść spod kursora
+					lub otrzymaniu fokusa (AA). </p>
+				<p>Opis problemu: Lista linków wewnątrz kafelków tematycznych rozwija się tylko po najechaniu na nie
+					myszką. Użytkownik korzystający z klawiatury może przejść tabulatorem do linków ukrytych wewnątrz
+					panelu, ale lista nie rozwinie się wizualnie.</p>
+				<p>Wpływ na użytkowników: Użytkownicy nawigujący klawiaturą oraz osoby słabowidzące nie mają dostępu do
+					menu ofertowego w kafelkach. "Znikający" punkt fokusu powoduje całkowitą dezorientację – użytkownik
+					nie wie, czy strona się zawiesiła, czy znajduje się w niewidocznym miejscu.</p>
+				<p>Rekomendacje: Należy zapewnić, aby ukryte listy linków rozwijały się nie tylko po najechaniu myszką,
+					ale również w momencie, gdy użytkownik wejdzie w nie klawiszem Tab. Każdy element, na którym
+					znajduje się użytkownik, musi być przez cały czas widoczny.</p>
+
+				<h5>Problem 2: Niewystarczający kontrast widocznego fokusu na niebieskim tle.</h5>
+				<p>Naruszone Kryterium WCAG: 2.4.7 Widoczny fokus (AA), 1.4.11 Kontrast dla treści niebędących tekstem
+					(AA).</p>
+				<p>Opis problemu: Podczas nawigacji klawiaturą, wskaźnik fokusu (ramka wokół aktywnego elementu)
+					pojawiający się na ciemnoniebieskim tle ma zbyt niski kontrast (2:1).</p>
+				<p>Wpływ na użytkowników: Osoby słabowidzące oraz użytkownicy pracujący w silnym oświetleniu (np. w
+					słońcu) mają duży problem z ustaleniem, który element na niebieskim tle jest aktualnie wybrany.
+					Powoduje to błędy w nawigacji i frustrację użytkownika.</p>
+				<p>Rekomendacje: Należy zapewnić, aby ramka fokusu na ciemnym tle była wyraźniejsza. Zgodnie ze
+					standardami
+					dostępności, elementy interaktywne muszą posiadać wskaźnik fokusu o kontraście wynoszącym co
+					najmniej 3:1 względem tła.</p>
+
+				<h5>Problem 3: Pusty link – brak nazwy/etykiety tekstowej dla odnośnika “Oferta zajęć”.</h5>
+				<p>Naruszone Kryterium WCAG: 2.4.4 Cel linku (w kontekście) (A), 4.1.2 Nazwa, rola, wartość (A).</p>
+				<p>Opis problemu: Na stronie znajduje się link prowadzący do sekcji „Pałacowy pomocnik”, który nie
+					zawiera żadnego tekstu ani opisu. W kodzie strony widnieje jedynie pusty znacznik. Ponieważ brakuje
+					treści tekstowej, czytnik ekranu nie jest w stanie poinformować użytkownika, dokąd prowadzi ten
+					odnośnik. Użytkownik niewidomy usłyszy jedynie komunikat „Link”, bez żadnych dodatkowych informacji.
+				</p>
+				<p>Wpływ na użytkowników: Osoby niewidome nie wiedzą, dokąd prowadzi ten link i jaką funkcję pełni. Jest
+					to błąd krytyczny, ponieważ pomija ważny element nawigacyjny serwisu, czyniąc go niedostępnym dla
+					części odbiorców.</p>
+				<p>Rekomendacje: Należy dodać tekstową nazwę do linku (np. „Przejdź do Pałacowego pomocnika”), aby każdy
+					użytkownik wiedział, dokąd on prowadzi.</p>
+
+				<h5>Problem 4: Brak powiązania etykiety z polem formularza oraz problem z domyślną wartością pola.</h5>
+				<p>Naruszone Kryterium WCAG: 1.3.1 Informacje i relacje (A), 3.3.2 Etykiety lub instrukcje (A), 4.1.2
+					Nazwa, rola, wartość (A)</p>
+				<p>Opis problemu: Pole formularza wyszukiwania nie jest poprawnie powiązane ze swoją etykietą tekstową.
+					Brak zgodności tych identyfikatorów powoduje, że technologie asystujące nie odczytują etykiety.
+					Ponadto w polu wpisano na stałe wartość
+					value="szukaj", która przy kliknięciu myszką nie znika automatycznie– użytkownik musi ją ręcznie
+					skasować, co utrudnia korzystanie z wyszukiwarki.</p>
+				<p>Wpływ na użytkowników:</p>
+				<ul>
+					<li>Osoby korzystające z czytników ekranu: Nie wiedzą, co wpisać do pola, ponieważ czytnik nie
+						odczytuje etykiety podczas nawigacji po formularzu.</li>
+					<li>Osoby z niepełnosprawnością motoryczną: Nie mogą kliknąć w tekst obok pola (etykietę), aby
+						wygodnie przenieść kursor do środka pola.</li>
+					<li>Osoby z zaburzeniami poznawczymi: Wstępnie wpisany tekst jest mylący, a konieczność jego
+						ręcznego kasowania wywołuje frustrację.</li>
+				</ul>
+				<p>Rekomendacje: Trzeba upewnić się, że tekst opisu („Poszukiwane słowo:”) jest technicznie połączony z
+					oknem do wpisywania tekstu. Dodatkowo domyślne słowo „szukaj” nie powinno być wpisane na stałe w
+					pole tekstowe. Należy je zastąpić tekstem pomocniczym, który sam zniknie w momencie, gdy użytkownik
+					zacznie pisać lub kliknie w pole.</p>
+
+				<h5>Problem 5: Niewłaściwy kontrast przycisku wyszukiwania (tekst na przycisku oraz tło przycisku).</h5>
+				<p>Naruszone Kryterium WCAG: 1.4.3 Kontrast (minimalny) (AA), 1.4.11 Kontrast dla treści niebędących
+					tekstem (AA).</p>
+				<p>Opis problemu: Tekst na przycisku wyszukiwania oraz tło samego przycisku nie posiadają
+					wystarczającego kontrastu w stosunku do otaczających elementów. Biały napis „SZUKAJ” na
+					jasnoturkusowym tle przycisku daje kontrast na poziomie 1,8:1. Powoduje to, że tekst na przycisku
+					jest niemal nieczytelny. Dodatkowo, jasny kolor samego przycisku za słabo odcina się od białego tła
+					formularza, co utrudnia jego lokalizację.</p>
+				<p>Wpływ na użytkowników: Osoby słabowidzące, z zaburzeniami wzroku i starsze mogą zupełnie nie dostrzec
+					napisu na przycisku, co uniemożliwia im szybką lokalizację przycisku i upewnienie się, do czego ten
+					element służy.</p>
+				<p>Rekomendacje: Przycisk „SZUKAJ” jest bardzo słabo widoczny. Jasny napis na jasnym tle sprawia, że
+					litery zlewają się ze sobą. Aby każdy użytkownik mógł bez problemu skorzystać z wyszukiwarki, należy
+					zmienić kolor przycisku na ciemniejszy lub zmienić kolor samego napisu na przycisku na ciemny (np.
+					czarny lub ciemnogranatowy).</p>
+
+				<h5>Problem 6: Brak opisu grupy pól w sekcji formularza wyszukiwania– użycie elementu fieldset bez
+					znacznika legend.</h5>
+				<p>Naruszone Kryterium WCAG: 1.3.1 Informacje i relacje (A), 3.3.2 Etykiety lub instrukcje (A).</p>
+				<p>Opis problemu: Pierwsza część formularza wyszukiwania została ujęta w znacznik grupujący
+					&lt;fieldset&gt;, jednak nie zawiera on wymaganego znacznika &lt;legend&gt;. Sam element
+					&lt;fieldset&gt; informuje technologie asystujące jedynie o obecności grupy pól, ale bez
+					elementu &lt;legend&gt; grupa ta pozostaje anonimowa. W efekcie użytkownik nie otrzymuje
+					kluczowej informacji o kontekście lub celu danej sekcji formularza.</p>
+				<p>Wpływ na użytkowników: Osoby korzystające z czytników ekranu słyszą komunikat o wejściu w grupę
+					(np. „grupa”), ale nie wiedzą, co ta grupa zawiera ani jakiego obszaru dotyczy, co może
+					prowadzić do dezorientacji podczas wypełniania formularza.</p>
+				<p>Rekomendacje: Każda wydzielona grupa pól na stronie powinna mieć swój tytuł. Obecnie zastosowano
+					techniczne grupowanie, ale zapomniano o dodaniu nagłówka tej sekcji. Należy uzupełnić kod o
+					odpowiedni opis (np. „Wyszukiwarka”), aby osoby korzystające z czytników ekranu dokładnie
+					wiedziały, w jakiej części formularza się znajdują.</p>
+
+				<h5>Problem 7: Redundantny atrybut title na przycisku tekstowym.</h5>
+				<p>Naruszone Kryterium WCAG: 1.3.1 Informacje i relacje (A), 4.1.2 Nazwa, rola, wartość (A).</p>
+				<p>Opis problemu: Na przycisku wyszukiwania oznaczonym tekstem „SZUKAJ” użyto dodatkowo atrybutu
+					title="Szukaj". Jest to błąd nadmiarowości (redundancji). Atrybut title ma za zadanie dostarczać
+					dodatkowych, pomocniczych informacji, a nie powielać widoczną na ekranie treść przycisku. Użycie
+					go w ten sposób powoduje powstawanie zbędnego dymku tekstowego po najechaniu myszką oraz może
+					prowadzić do podwójnego odczytywania nazwy przycisku przez czytniki ekranu.</p>
+				<p>Wpływ na użytkowników: Zbędny dymek spod kursora, może zasłaniać inne elementy strony pod
+					kursorem. Osoby korzystające z czytników ekranu mogą usłyszeć zbędne powtórzenia komunikatów, co
+					spowalnia i utrudnia korzystanie ze strony.</p>
+				<p>Rekomendacje: Przycisk posiada już wyraźny napis „SZUKAJ”, więc nie potrzebuje dodatkowego
+					podpisu w dymku. Należy usunąć ukryty w kodzie atrybut, który wyświetla tę powtórzoną
+					informację, aby strona była bardziej przejrzysta i nie dezorientowała użytkowników czytników
+					ekranu.</p>
+
+				<h5>Problem 8: Niewłaściwy kontrast kolorystyczny tekstu na kafelkach tematycznych (12 błędów).</h5>
+				<p>Naruszone Kryterium WCAG: 1.4.3 Kontrast (minimalny) (AA), 1.4.11 Kontrast dla treści niebędących
+					tekstem (AA).</p>
+				<p>Opis problemu: Teksty oraz grafiki informacyjne umieszczone na kolorowych kafelkach w panelu
+					bocznym nie posiadają wystarczającego kontrastu w stosunku do swojego tła. Minimalny
+					współczynnik kontrastu wymagany przez WCAG dla standardowego tekstu wynosi 4,5:1 (lub 3:1 dla
+					dużego tekstu). W badanych kafelkach współczynnik ten spada nawet do poziomu 2,9:1, co znacznie
+					utrudnia lub całkowicie uniemożliwia odczytanie treści osobom słabowidzącym.</p>
+				<p>Wpływ na użytkowników: W trudnych warunkach oświetleniowych (np. przy dużym nasłonecznieniu na
+					ekranie telefonu) treść staje się nieczytelna. Osoby słabowidzące oraz starsze: Mogą mieć
+					ogromne trudności z odczytaniem napisów na kafelkach, ponieważ zlewają się one z jaskrawym tłem.
+				</p>
+				<p>Rekomendacje: Należy zmodyfikować kolory pierwszoplanowe (tekst) oraz kolory tła dla wszystkich
+					12 kafelków bocznych tak, aby ich współczynnik kontrastu wynosił minimum 4,5:1. Zaleca się
+					regularne testowanie kontrastu przy doborze nowej palety kolorów.</p>
+
+				<h5>Problem 9: Niewłaściwy kontrast kolorystyczny linków w menu bocznym.</h5>
+				<p>Naruszone Kryterium WCAG: 1.4.3 Kontrast (minimalny) (AA), 1.4.1 Użycie koloru (A).</p>
+				<p>Opis problemu: Tekst linków w menu bocznym posiada zbyt niski kontrast w stosunku do białego tła.
+					Współczynnik kontrastu wynosi w tym przypadku 3,6:1, podczas gdy minimalny wymóg dla tekstu o
+					standardowym rozmiarze to 4,5:1. Sprawia to, że elementy nawigacyjne są mało czytelne.</p>
+				<p>Wpływ na użytkowników: W jasnym otoczeniu (np. w pełnym słońcu) napisy na ekranie stają się
+					niemal niewidoczne. Osoby słabowidzące: Mogą mieć duże trudności z odczytaniem nazw
+					poszczególnych pozycji w menu i sprawnym poruszaniem się po strukturze serwisu.</p>
+				<p>Rekomendacje: Aby menu było czytelne dla wszystkich, należy zmienić kontrast linków bocznych i
+					tła na poziomie minimum 4,5:1. Zaleca się także dodanie podkreślenia linków w stanie fokusu oraz
+					po najechaniu myszką (hover, focus), aby dodatkowo wyróżnić je bez użycia samego koloru.</p>
+
+				<h5>Problem 10: Nieprawidłowo użyty atrybut alt dla grafik ozdobnych.</h5>
+				<p>Naruszone Kryterium WCAG: 1.1.1 Treść nietekstowa (A).</p>
+				<p>Opis problemu: Wewnątrz kafelków nawigacyjnych znajdują się grafiki o charakterze czysto
+					dekoracyjnym. Grafiki te nie wnoszą żadnych nowych informacji, ponieważ ich treść jest już w
+					pełni przekazana przez tekst nagłówka kafelka. Mimo to, przypisano im tekst alternatywny (np.
+					alt="czytelnia"). Powoduje to, że czytniki ekranu odczytują ten opis, co jest zbędne i wprowadza
+					chaos informacyjny.</p>
+				<p>Wpływ na użytkowników: Osoby korzystające z czytników ekranu słyszą zbędne opisy obrazków, które
+					nie wnoszą nic do zrozumienia treści strony. Wydłuża to czas potrzebny na zapoznanie się z menu
+					i utrudnia dotarcie do właściwych linków.</p>
+				<p>Rekomendacje: Obrazki znajdujące się na kafelkach pełnią jedynie funkcję ozdobną i nie zawierają
+					żadnych ważnych informacji. W takim przypadku w kodzie strony należy pozostawić pusty opis
+					obrazka. Dzięki temu programy czytające stronę dla osób niewidomych po prostu go pominą, a
+					użytkownik od razu usłyszy najważniejszy tekst.</p>
+
+				<h5>Problem 11: Nieprawidłowa struktura listy (błędne zagnieżdżenie elementów).</h5>
+				<p>Naruszone Kryterium WCAG: 1.3.1 Informacje i relacje (A).</p>
+				<p>Opis problemu: Kod strony zawiera błąd strukturalny w budowie list. Znacznik listy &lt;ul&gt;
+					został umieszczony bezpośrednio w innym znaczniku &lt;ul&gt;, bez wymaganego elementu
+					&lt;li&gt;. Taka konstrukcja jest niezgodna ze standardem HTML.</p>
+				<p>Wpływ na użytkowników: Powoduje to, że czytniki ekranu mogą błędnie ogłaszać liczbę elementów na
+					liście lub całkowicie pogubić się w strukturze menu, co utrudnia orientację osobom niewidomym.
+					Wprowadza to chaos w nawigacji i sprawia, że poruszanie się po menu jest nielogiczne i męczące.
+				</p>
+				<p>Rekomendacje: Należy naprawić strukturę list na stronie, aby była zgodna ze standardami HTML.
+					Każda lista powinna zawierać bezpośrednio tylko elementy listy.</p>
+
+				<h5>Problem 12: Brak głównego nagłówka H1 i zaburzona hierarchia nagłówków.</h5>
+				<p>Naruszone Kryterium WCAG: 1.3.1 - Informacje i relacje (A), 2.4.6 - Nagłówki i etykiety (AA).</p>
+				<p>Opis problemu: Brak zdefiniowanego nagłówka H1, który informuje o tematyce podstrony. Struktura
+					nagłówków zaczyna się od poziomu H3 (użytego w panelu bocznym „Pałacowy Pomocnik”), co
+					jest błędem. Nagłówki muszą tworzyć logiczną, schodkową strukturę (H1 -> H2 -> H3).</p>
+				<p>Wpływ na użytkowników: Osoby niewidome korzystające z czytników ekranu często przeglądają stronę,
+					generując listę nagłówków. Brak H1 sprawia, że nie wiedzą, na jakiej podstronie się znajdują.
+					Zaburzona hierarchia (start od H3) utrudnia zrozumienie ważności poszczególnych sekcji serwisu.
+				</p>
+				<p>Rekomendacje: Należy dodać nagłówek H1 o treści „Wyszukiwarka” na początku głównej treści strony.
+					Należy również poprawić poziomy pozostałych nagłówków, aby zachować ciągłość (np. zmienić
+					nagłówki w
+					kafelkach z H3 na H2, jeśli nie ma nagłówka pośredniego).</p>
+
+				<h5>Problem 13: Puste paragrafy – wykorzystywanie elementów tekstowych do celów prezentacyjnych.
+				</h5>
+				<p>Naruszone Kryterium WCAG: 1.3.1 Informacje i relacje (A).</p>
+				<p>Opis problemu: W kodzie strony pomiędzy kafelkami nawigacyjnymi umieszczono puste znaczniki
+					paragrafów
+					&lt;p&gt;&lt;/p&gt;. Służą one wyłącznie celom wizualnym – wymuszają odstęp (margines) pomiędzy
+					kolejnymi
+					elementami. Taka praktyka powoduje powstawanie zbędnego kodu i wprowadza niepotrzebny szum
+					informacyjny.</p>
+				<p>Wpływ na użytkowników: Urządzenia asystujące mogą odczytywać te elementy jako „pusty”, co
+					niepotrzebnie przerywa płynność zapoznawania się z treścią strony i dekoncentruje użytkownika.
+					Dodatkowo niekontrolowane w ten sposób odstępy mogą różnie renderować się w różnych
+					przeglądarkach, zaburzając spójność wizualną strony.</p>
+				<p>Rekomendacje: Do robienia odstępów i przerw na stronie nie należy używać pustych linijek tekstu
+					ani pustych paragrafów w kodzie. Wszystkie odległości pomiędzy blokami powinny być ustawione w
+					stylach wizualnych strony, a puste elementy należy usunąć.</p>
+
+				<h5>Problem 14: Niewłaściwy kontrast kolorystyczny linku powrotu w ścieżce nawigacyjnej.</h5>
+				<p>Naruszone Kryterium WCAG: 1.4.3 Kontrast (minimalny) (AA).</p>
+				<p>Opis problemu: Tekst linku „Strona główna” w ścieżce powrotu (breadcrumbs) ma kolor jasnoszary,
+					który na białym tle strony jest bardzo słabo widoczny. Współczynnik kontrastu wynosi jedynie
+					2,1:1, podczas gdy minimalny wymóg dla tekstu o standardowym rozmiarze to 4,5:1. Tak niski
+					kontrast utrudnia odczytanie ścieżki powrotnej i powrót do strony głównej.</p>
+				<p>Wpływ na użytkowników: Przy słabszym ekranie lub niekorzystnym oświetleniu tekst staje się
+					całkowicie nieczytelny. Osoby słabowidzące oraz
+					starsze mogą w ogóle nie zauważyć tego elementu nawigacyjnego, przez co tracą informację o tym,
+					w jakim miejscu serwisu aktualnie się znajdują.</p>
+				<p>Rekomendacje: Kolor tekstu linku musi zostać zmieniony na ciemniejszy, tak aby w zestawieniu z
+					białym tłem osiągnąć współczynnik kontrastu na poziomie minimum 4,5:1.</p>
+			</div>
+
+			<h3>Wnioski końcowe</h3>
+			<p>Podstrona wyszukiwarki serwisu Pałacu Młodzieży w Warszawie jest częściowo zgodna z wytycznymi WCAG 2.1
+				na poziomie A i AA oraz wymogami Ustawy z dnia 4 kwietnia 2019 r. o dostępności cyfrowej. Poziom
+				zgodności wynosi
+				76%, co wskazuje na poprawny fundament serwisu, ale jednocześnie ujawnia bariery wymagające pilnej
+				interwencji programistycznej.
+				Pełny raport oraz wnioski końcowe zostaną przedstawione po zakończeniu kompleksowej oceny witryny.
+				Przeprowadzona analiza pozwoli na precyzyjne rozróżnienie błędów o charakterze globalnym (wynikających z
+				architektury szablonu) od problemów specyficznych dla badanej podstrony.</p>
+
+			<p>W celu podniesienia dostępności cyfrowej serwisu, sugeruję wprowadzenie zmian opisanych szczegółowo w
+				załączniku „Dokumentacja wizualna błędów – Audyt WCAG 2.1”, który zawiera szczegółowe wytyczne
+				techniczne oraz
+				odnośniki do dobrych praktyk W3C. Jako priorytetowe działania wskazuję:</p>
+			<ul>
+				<li>Uproszczenie kodu: usunięcie pustych elementów prezentacyjnych (&lt;p&gt;,&lt;/p&gt;) na rzecz
+					czystych
+					stylów
+					CSS, co przyspieszy renderowanie i poprawi strukturę DOM.</li>
+				<li>Modernizację jednostek miary: zamianę sztywnych jednostek pikselowych (px) na jednostki relatywne
+					(rem) dla wielkości czcionek. Pozwoli to stronie automatycznie i poprawnie reagować na domyślne
+					ustawienia wielkości tekstu w przeglądarkach użytkowników.</li>
+				<li>Naprawę mechanizmu fokusu: zapewnienie pełnej, widocznej i logicznej nawigacji klawiszami Tab/Enter.
+				</li>
+				<li>Ciągły monitoring: regularne sprawdzanie dostępności przy każdej aktualizacji treści lub kodu, aby
+					uniknąć powrotu wyeliminowanych barier.</li>
+			</ul>
+			<p>Na kogo wpływają naprawy:</p>
+			<ul>
+				<li>Osoby niewidome: Uzyskają logiczny obraz strony dzięki poprawnej semantyce.</li>
+				<li>Osoby słabowidzące: Będą mogły przeczytać treści i zlokalizować przyciski dzięki poprawnemu
+					kontrastowi.</li>
+				<li>Osoby z niepełnosprawnością motoryczną: Będą mogły obsłużyć menu i formularz wyłącznie za pomocą
+					klawiatury.</li>
+				<li>Wszyscy użytkownicy: Skorzystają z czystszego kodu, lepszego SEO i wyższej wydajności strony.</li>
+			</ul>
+
+			<h3 id="zalaczniki">Załączniki</h3>
+			<ol>
+				<li><a href="dokumentacja_wizualna_bledow_audyt_wcag.pdf" target="_blank" rel="noopener noreferrer"
+						aria-label="Dokumentacja wizualna błędów (PDF, 1.3 MB) - otwiera się w nowej karcie" title="Otwórz PDF w nowej karcie">Dokumentacja
+						wizualna błędów </a>(PDF, 1,3 MB, nowa karta)</li>
+				<li><a href="pelna_tabela_zgodnosci_z_wcag.pdf" target="_blank" rel="noopener noreferrer"
+						aria-label="Pełna tabela zgodności z WCAG 2.1 (PDF, 111 KB) - otwiera się w nowej karcie" title="Otwórz PDF w nowej karcie">Pełna
+						tabela zgodności z WCAG 2.1 </a>(PDF, 111 KB, nowa karta)</li>
+			</ol>
+		</section>
+
+		<section>
+			<h2 id="zrodla" class="zrodla">Źródła/metodyka i narzędzia</h2>
+
+			<ul class="zrodla-ul">
+				<li class="zrodla-li" tabindex="0"
+					aria-label="Sekcja: Metodologia i standardy. Najedź lub użyj klawisza Tab, aby wyświetlić szczegóły.">
+					<h3>Metodologia i standardy:<span class="icon" aria-hidden="true">▼</span></h3>
+					<div class="content">
+						<ul>
+							<li>ISTQB Foundation Level 4.0.1</li>
+							<li>WCAG 2.1 (Web Content Accessibility Guidelines)</li>
+
+							<li>WCAG Evaluation Methodology (WCAG-EM) 1.0</li>
+						</ul>
+					</div>
+				</li>
+				<li class="zrodla-li" tabindex="0"
+					aria-label="Sekcja: Literatura. Najedź lub użyj klawisza Tab, aby wyświetlić szczegóły.">
+					<h3>Literatura<span class="icon" aria-hidden="true">▼</span></h3>
+					<div class="content">
+						<ul>
+							<li>FELKE-MORRIS, Terry. <em>Web Design z HTML5 i CSS3. Technologie frontendowe od podstaw</em>. Wydawnictwo Helion</li>
+        					<li>JENDRZEJEWSKI, Rafał. <em>WCAG Dostępność cyfrowa stron internetowych i aplikacji</em>. Wydawnictwo Helion</li>
+       						<li>ROMAN, Adam, STAPP, Lucjan. <em>Certyfikowany tester ISTQB. Poziom podstawowy</em>. Wydawnictwo Helion</li>
+        					<li>SMILGIN, Radosław. <em>Praktyka testowania</em>. Wydawnictwo PWN</li>
+						</ul>
+					</div>
+				</li>
+				<li class="zrodla-li" tabindex="0"
+					aria-label="Sekcja: Bazy wiedzy i narzędzia. Najedź lub użyj klawisza Tab, aby wyświetlić szczegóły.">
+					<h3>Bazy wiedzy i narzędzia<span class="icon" aria-hidden="true">▼</span></h3>
+					<div class="content">
+						<ul>
+							<li>Narzędzia i walidatory:</li>
+							<li>Baza wiedzy i edukacja: Materiały szkoleniowe Szkoły Dostępności Cyfrowej Certes.</li>
+							<li>Zasoby online: <a href="https://lepszyweb.pl">LepszyWeb</a>, <a href="
+									https://www.w3.org">The World Wide Web Consortium (W3C)</a></li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+		</section>
+	</main>
+
+	<footer>
+		<h3 id="kontakt">Kontakt</h3>
+		<address>
+			<p>E-mail:<a href="mailto:chaberskapatrycja02@gmail.com">chaberskapatrycja02@gmail.com</a></p>
+		</address>
+			<h3>GitHub:</h3>
+			<a href="https://github.com/chaberpatry01/portfolio.git" target="_blank" rel="noopener noreferrer"
+				aria-label="Zobacz kod źródłowy mojego portfolio na GitHubie (otwiera się w nowej karcie)">Zobacz kod
+				źródłowy na GitHubie</a>
+		
+		<h3>CV:</h3>
+		<a href="patrycja_chaberska_cv_testerka_wcag.pdf" target="_blank" rel="noopener"
+			aria-label="Zobacz moje CV (plik PDF, otwiera się w nowej karcie)"
+			title="Otwórz PDF w nowej karcie">Zobacz w PDF</a>
+
+		<p>&copy; 2026 Patrycja Chaberska. Dokumentacja portfolio stworzona zgodnie z wytycznymi ISTQB oraz WCAG 2.1.
+		</p>
+		<p>Wersja: 3.2.0 (Aktualizacja: 13.05.2026)</p>
+		<p>Pierwsza publikacja: luty 2026</p>
+		<a href="#main" class="back-to-top" aria-label="Wróć na początek strony" title="Wróć na górę"><img
+				src="assets/up_arrow.svg" alt="" width="48" height="48"></a>
+		<p>
+			<a href="https://jigsaw.w3.org/css-validator/check/referer" target="_blank" rel="noopener noreferrer" title="Poprawny CSS! - otwiera się w nowej karcie">
+				<img style="border:0;width:88px;height:31px"
+				src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+				alt="Poprawny CSS! - otwiera się w nowej karcie" />
+			</a>
+		</p>
+	</footer>
+</body>
+
+</html>
