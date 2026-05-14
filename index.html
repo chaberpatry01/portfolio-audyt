@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Portfolio - Patrycja Chaberska - Tester</title>
-	<link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96">
-	<link rel="icon" type="image/svg+xml" href="favicon.svg">
-	<link rel="shortcut icon" href="favicon.ico">
-	<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="assets/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/svg+xml" href="assets/favicon-96x96.png">
+	<link rel="shortcut icon" href="assets/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 	<link rel="manifest" href="site.webmanifest">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,13 +20,13 @@
 
 <body>
 	<nav class="skip-links">
-        <a href="#tresc" class="skip-link">Przejdź do głównej treści</a>
-        <a href="#kontakt" class="skip-link">Przejdź do kontaktu</a>
-    </nav>
+		<a href="#tresc" class="skip-link">Przejdź do głównej treści</a>
+		<a href="#kontakt" class="skip-link">Przejdź do kontaktu</a>
+	</nav>
 	<header class="header-full">
 		<div class="logo-group">
-			<img src="assets/pc_logo.png" alt="Logo Patrycja Chaberska" class="logo" width="60">
-			<h1 id="main">Portfolio testowe dla platformy e-commerce wlep.pro- analiza wymagań i projektowanie testów
+			<img id="main" src="assets/pc_logo.png" alt="Logo Patrycja Chaberska" class="logo" width="60">
+			<h1>Portfolio testowe dla platformy e-commerce wlep.pro- analiza wymagań i projektowanie testów
 			</h1>
 		</div>
 	</header>
@@ -490,7 +490,7 @@
 					błędu. Zobacz powiązany błąd:
 					<a href="#bug01">BUG-01: Brak walidacji formatu kodu pocztowego</a>.
 				</p>
-				<video controls preload="metadata" poster="miniatura.png" aria-describedby="video-description">
+				<video controls preload="metadata" poster="assets/miniatura.png" aria-describedby="video-description">
 					<source src="assets/nagranie_walidacja_kodu.mp4" type="video/mp4">
 				</video>
 				<p id="video-description"><b>Opis wideo 1:</b> Nagranie przedstawia konfigurację testu manualnego w
@@ -804,7 +804,8 @@
 				</p>
 
 				<p>
-					<em>Informacja: Dokumentacja techniczna błędów jest dostępna w <a href="#zalaczniki">Załącznikach</a>.
+					<em>Informacja: Dokumentacja techniczna błędów jest dostępna w <a
+							href="#zalaczniki">Załącznikach</a>.
 						Projekt będzie sukcesywnie uzupełniany o wyniki kolejnych etapów badania: testy czytnikiem
 						ekranu VoiceOver oraz testy funkcjonalne.</em>
 				</p>
@@ -1090,10 +1091,12 @@
 			<h3 id="zalaczniki">Załączniki</h3>
 			<ol>
 				<li><a href="dokumentacja_wizualna_bledow_audyt_wcag.pdf" target="_blank" rel="noopener noreferrer"
-						aria-label="Dokumentacja wizualna błędów (PDF, 1.3 MB) - otwiera się w nowej karcie" title="Otwórz PDF w nowej karcie">Dokumentacja
+						aria-label="Dokumentacja wizualna błędów (PDF, 1.3 MB) - otwiera się w nowej karcie"
+						title="Otwórz PDF w nowej karcie">Dokumentacja
 						wizualna błędów </a>(PDF, 1,3 MB, nowa karta)</li>
 				<li><a href="pelna_tabela_zgodnosci_z_wcag.pdf" target="_blank" rel="noopener noreferrer"
-						aria-label="Pełna tabela zgodności z WCAG 2.1 (PDF, 111 KB) - otwiera się w nowej karcie" title="Otwórz PDF w nowej karcie">Pełna
+						aria-label="Pełna tabela zgodności z WCAG 2.1 (PDF, 111 KB) - otwiera się w nowej karcie"
+						title="Otwórz PDF w nowej karcie">Pełna
 						tabela zgodności z WCAG 2.1 </a>(PDF, 111 KB, nowa karta)</li>
 			</ol>
 		</section>
@@ -1119,10 +1122,13 @@
 					<h3>Literatura<span class="icon" aria-hidden="true">▼</span></h3>
 					<div class="content">
 						<ul>
-							<li>FELKE-MORRIS, Terry. <em>Web Design z HTML5 i CSS3. Technologie frontendowe od podstaw</em>. Wydawnictwo Helion</li>
-        					<li>JENDRZEJEWSKI, Rafał. <em>WCAG Dostępność cyfrowa stron internetowych i aplikacji</em>. Wydawnictwo Helion</li>
-       						<li>ROMAN, Adam, STAPP, Lucjan. <em>Certyfikowany tester ISTQB. Poziom podstawowy</em>. Wydawnictwo Helion</li>
-        					<li>SMILGIN, Radosław. <em>Praktyka testowania</em>. Wydawnictwo PWN</li>
+							<li>FELKE-MORRIS, Terry. <em>Web Design z HTML5 i CSS3. Technologie frontendowe od
+									podstaw</em>. Wydawnictwo Helion</li>
+							<li>JENDRZEJEWSKI, Rafał. <em>WCAG Dostępność cyfrowa stron internetowych i aplikacji</em>.
+								Wydawnictwo Helion</li>
+							<li>ROMAN, Adam, STAPP, Lucjan. <em>Certyfikowany tester ISTQB. Poziom podstawowy</em>.
+								Wydawnictwo Helion</li>
+							<li>SMILGIN, Radosław. <em>Praktyka testowania</em>. Wydawnictwo PWN</li>
 						</ul>
 					</div>
 				</li>
@@ -1147,29 +1153,27 @@
 		<address>
 			<p>E-mail:<a href="mailto:chaberskapatrycja02@gmail.com">chaberskapatrycja02@gmail.com</a></p>
 		</address>
-			<h3>GitHub:</h3>
-			<a href="https://github.com/chaberpatry01/portfolio-audyt" target="_blank" rel="noopener noreferrer"
-				aria-label="Zobacz kod źródłowy mojego portfolio na GitHubie (otwiera się w nowej karcie)">Zobacz kod
-				źródłowy na GitHubie</a>
-		
+		<h3>GitHub:</h3>
+		<a href="https://github.com/chaberpatry01/portfolio-audyt" target="_blank" rel="noopener noreferrer"
+			aria-label="Zobacz kod źródłowy mojego portfolio na GitHubie (otwiera się w nowej karcie)">Zobacz kod
+			źródłowy na GitHubie</a>
+
 		<h3>CV:</h3>
 		<a href="patrycja_chaberska_cv_testerka_wcag.pdf" target="_blank" rel="noopener"
-			aria-label="Zobacz moje CV (plik PDF, otwiera się w nowej karcie)"
-			title="Otwórz PDF w nowej karcie">Zobacz w PDF</a>
+			aria-label="Zobacz moje CV (plik PDF, otwiera się w nowej karcie)" title="Otwórz PDF w nowej karcie">Zobacz
+			w PDF</a>
 
 		<p>&copy; 2026 Patrycja Chaberska. Dokumentacja portfolio stworzona zgodnie z wytycznymi ISTQB oraz WCAG 2.1.
 		</p>
 		<p>Wersja: 3.2.0 (Aktualizacja: 13.05.2026)</p>
 		<p>Pierwsza publikacja: luty 2026</p>
-		<a href="#main" class="back-to-top" aria-label="Wróć na początek strony" title="Wróć na górę"><img
-				src="assets/up_arrow.svg" alt="" width="48" height="48"></a>
-		<p>
-			<a href="https://jigsaw.w3.org/css-validator/check/referer" target="_blank" rel="noopener noreferrer" title="Poprawny CSS! - otwiera się w nowej karcie">
-				<img style="border:0;width:88px;height:31px"
+		<a href="https://jigsaw.w3.org/css-validator/check/referer">
+			<img style="border:0;width:88px;height:31px"
 				src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-				alt="Poprawny CSS! - otwiera się w nowej karcie" />
-			</a>
-		</p>
+				alt="Poprawny CSS!" />
+		</a>
+		<a href="#main" class="back-to-top" aria-label="Wróć na początek strony" title="Wróć na górę"><img
+			src="assets/up_arrow.svg" alt="" width="48" height="48"></a>
 	</footer>
 </body>
 
