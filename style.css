@@ -15,9 +15,18 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+*:focus-visible {
+    outline: 3px solid #3064ae;
+    outline-offset: 4px;
+}
+
 p, ul, ol, figure, blockquote, hr {
     margin-top: 0;
     margin-bottom: 1.5rem;
+}
+
+p strong {
+    color: 00234a;
 }
 
 h2, h3, h4 {
@@ -77,6 +86,18 @@ abbr {
     text-decoration: underline dotted #00438f;
     cursor: help;
     font-weight: 600;
+}
+
+code {
+    font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+    font-size: 85%;
+    padding: .2em .4em;
+    margin: 0;
+    background-color: rgba(175, 184, 193, 0.2);
+    color: #24292f; 
+    border-radius: 6px;
+    white-space: break-spaces;
+    word-break: break-all;
 }
 
 .nav-full {
@@ -270,20 +291,19 @@ figcaption {
 }
 
 .figure-graph {
-    max-width: 400px;
+    max-width: 650px;
     width: 100%;
     margin: 3rem auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: block;
+    text-align: center;
 }
 .figure-graph img {
     width: 100%;
     height: auto;
-    border: 1px solid #767676;
-    padding: 15px;
-    background-color: #ffffff;
-    border-radius: 8px;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0;
 }
 
 .back-to-top {
@@ -322,10 +342,12 @@ figcaption {
     align-items: flex-start;
 }
 
-
-.zrodla-li {
+.zrodla-li-wrapper {
     flex: 1;
     min-width: 280px;
+}
+
+.zrodla-li {
     background-color: #ffffff;
     border: 1px solid #e0e6ed;
     border-top: 4px solid #3064ae; 
@@ -333,7 +355,15 @@ figcaption {
     padding: 1.5rem;
     overflow: hidden;
     transition: all 0.4s ease-in-out;
+}
+
+summary {
+    list-style: none;
     cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+    display: none;
 }
 
 .zrodla-li h3 {
@@ -343,6 +373,7 @@ figcaption {
     text-transform: uppercase;
     letter-spacing: 1px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -361,32 +392,38 @@ figcaption {
 .content {
     max-height: 0; 
     opacity: 0;
+    visibility: hidden;
     transition: all 0.4s ease-in-out;
-    pointer-events: none;
+    overflow: hidden;
 }
 
-.zrodla-li:hover, 
+.zrodla-li[open] .content {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+    margin-top: 1rem;
+}
+
+.zrodla-li:hover,
 .zrodla-li:focus-within {
     background-color: #f0f7ff;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-.zrodla-li:hover .content, 
-.zrodla-li:focus-within .content {
-    max-height: 500px;
-    opacity: 1;
-    margin-top: 1rem;
-    pointer-events: auto;
+summary:focus-visible .zrodla-li,
+.zrodla-li:focus-within {
+    outline: 2px solid #3064ae;
+    outline-offset: 2px;
 }
 
-.icon {
+.zrodla-li h3::after {
+    content: "▼";
     font-size: 0.8rem;
-    transition: transform 0.4s ease;
     color: #3064ae;
+    transition: transform 0.4s ease;
 }
 
-.zrodla-li:hover .icon, 
-.zrodla-li:focus-within .icon {
+.zrodla-li[open] h3::after {
     transform: rotate(180deg);
 }
 
@@ -460,7 +497,7 @@ figcaption {
     border-right: none;
 }
 
-.skip-link:focus {
+.skip-link:focus-visible {
     background: #1a4b8c;
     outline: 4px solid #ff9800;
     outline-offset: -4px;
