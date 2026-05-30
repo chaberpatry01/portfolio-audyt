@@ -844,52 +844,68 @@
 
 			<div class="analiza-zgodnosci">
 				<h5>Problem 1: Brak dostępności klawiaturowej menu rozwijanego oraz fokusa na ukrytych elementach.</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 2.1.1 Klawiatura (A), 2.4.7 Widoczny fokus (AA), 1.4.13 Treść spod kursora
+				<p><strong>Naruszone Kryterium WCAG:</strong> 2.1.1 Klawiatura (A), 2.4.7 Widoczny fokus (AA), 1.4.13
+					Treść spod kursora
 					lub otrzymaniu fokusa (AA). </p>
-				<p><strong>Opis problemu:</strong> Lista linków wewnątrz kafelków tematycznych rozwija się tylko po najechaniu na nie
+				<p><strong>Opis problemu:</strong> Lista linków wewnątrz kafelków tematycznych rozwija się tylko po
+					najechaniu na nie
 					myszką. Użytkownik korzystający z klawiatury może przejść tabulatorem do linków ukrytych wewnątrz
 					panelu, ale lista nie rozwinie się wizualnie.</p>
-				<p><strong>Wpływ na użytkowników:</strong> Użytkownicy nawigujący klawiaturą oraz osoby słabowidzące nie mają dostępu do
+				<p><strong>Wpływ na użytkowników:</strong> Użytkownicy nawigujący klawiaturą oraz osoby słabowidzące nie
+					mają dostępu do
 					menu ofertowego w kafelkach. "Znikający" punkt fokusu powoduje całkowitą dezorientację – użytkownik
 					nie wie, czy strona się zawiesiła, czy znajduje się w niewidocznym miejscu.</p>
-				<p><strong>Rekomendacje:</strong> Należy zapewnić, aby ukryte listy linków rozwijały się nie tylko po najechaniu myszką,
+				<p><strong>Rekomendacje:</strong> Należy zapewnić, aby ukryte listy linków rozwijały się nie tylko po
+					najechaniu myszką,
 					ale również w momencie, gdy użytkownik wejdzie w nie klawiszem Tab. Każdy element, na którym
 					znajduje się użytkownik, musi być przez cały czas widoczny.</p>
 
 				<h5>Problem 2: Niewystarczający kontrast widocznego fokusu na niebieskim tle.</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 2.4.7 Widoczny fokus (AA), 1.4.11 Kontrast dla treści niebędących tekstem
+				<p><strong>Naruszone Kryterium WCAG:</strong> 2.4.7 Widoczny fokus (AA), 1.4.11 Kontrast dla treści
+					niebędących tekstem
 					(AA).</p>
-				<p><strong>Opis problemu:</strong> Podczas nawigacji klawiaturą, wskaźnik fokusu (ramka wokół aktywnego elementu)
+				<p><strong>Opis problemu:</strong> Podczas nawigacji klawiaturą, wskaźnik fokusu (ramka wokół aktywnego
+					elementu)
 					pojawiający się na ciemnoniebieskim tle ma zbyt niski kontrast (2:1).</p>
-				<p><strong>Wpływ na użytkowników:</strong> Osoby słabowidzące oraz użytkownicy pracujący w silnym oświetleniu (np. w
+				<p><strong>Wpływ na użytkowników:</strong> Osoby słabowidzące oraz użytkownicy pracujący w silnym
+					oświetleniu (np. w
 					słońcu) mają duży problem z ustaleniem, który element na niebieskim tle jest aktualnie wybrany.
 					Powoduje to błędy w nawigacji i frustrację użytkownika.</p>
-				<p><strong>Rekomendacje:</strong> Należy zapewnić, aby ramka fokusu na ciemnym tle była wyraźniejsza. Zgodnie ze
+				<p><strong>Rekomendacje:</strong> Należy zapewnić, aby ramka fokusu na ciemnym tle była wyraźniejsza.
+					Zgodnie ze
 					standardami
 					dostępności, elementy interaktywne muszą posiadać wskaźnik fokusu o kontraście wynoszącym co
 					najmniej 3:1 względem tła.</p>
 
 				<h5>Problem 3: Pusty link – brak nazwy/etykiety tekstowej dla odnośnika “Oferta zajęć”.</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 2.4.4 Cel linku (w kontekście) (A), 4.1.2 Nazwa, rola, wartość (A).</p>
-				<p><strong>Opis problemu:</strong> Na stronie znajduje się link prowadzący do sekcji „Pałacowy pomocnik”, który nie
+				<p><strong>Naruszone Kryterium WCAG:</strong> 2.4.4 Cel linku (w kontekście) (A), 4.1.2 Nazwa, rola,
+					wartość (A).</p>
+				<p><strong>Opis problemu:</strong> Na stronie znajduje się link prowadzący do sekcji „Pałacowy
+					pomocnik”, który nie
 					zawiera żadnego tekstu ani opisu. W kodzie strony widnieje jedynie pusty znacznik. Ponieważ brakuje
 					treści tekstowej, czytnik ekranu nie jest w stanie poinformować użytkownika, dokąd prowadzi ten
 					odnośnik. Użytkownik niewidomy usłyszy jedynie komunikat „Link”, bez żadnych dodatkowych informacji.
 				</p>
-				<p><strong>Wpływ na użytkowników:</strong> Osoby niewidome nie wiedzą, dokąd prowadzi ten link i jaką funkcję pełni. Jest
+				<p><strong>Wpływ na użytkowników:</strong> Osoby niewidome nie wiedzą, dokąd prowadzi ten link i jaką
+					funkcję pełni. Jest
 					to błąd krytyczny, ponieważ pomija ważny element nawigacyjny serwisu, czyniąc go niedostępnym dla
 					części odbiorców.</p>
-				<p><strong>Rekomendacje:</strong> Należy dodać tekstową nazwę do linku (np. „Przejdź do Pałacowego pomocnika”), aby każdy
+				<p><strong>Rekomendacje:</strong> Należy dodać tekstową nazwę do linku (np. „Przejdź do Pałacowego
+					pomocnika”), aby każdy
 					użytkownik wiedział, dokąd on prowadzi.</p>
 
 				<h5>Problem 4: Brak powiązania etykiety z polem formularza oraz problem z domyślną wartością pola.</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 Informacje i relacje (A), 3.3.2 Etykiety lub instrukcje (A), 4.1.2
+				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 Informacje i relacje (A), 3.3.2 Etykiety lub
+					instrukcje (A), 4.1.2
 					Nazwa, rola, wartość (A)</p>
-				<p><strong>Opis problemu:</strong> Pole formularza wyszukiwania nie jest poprawnie powiązane ze swoją etykietą tekstową.
+				<p><strong>Opis problemu:</strong> Pole formularza wyszukiwania nie jest poprawnie powiązane ze swoją
+					etykietą tekstową.
 					Brak zgodności tych identyfikatorów powoduje, że technologie asystujące nie odczytują etykiety.
 					Ponadto w polu wpisano na stałe wartość
-					<code>value="szukaj"</code>, która przy kliknięciu myszką nie znika automatycznie– użytkownik musi ją ręcznie
-					skasować, co utrudnia korzystanie z wyszukiwarki.</p>
+					<code>value="szukaj"</code>, która przy kliknięciu myszką nie znika automatycznie– użytkownik musi
+					ją ręcznie
+					skasować, co utrudnia korzystanie z wyszukiwarki.
+				</p>
 				<p><strong>Wpływ na użytkowników:</strong></p>
 				<ul>
 					<li>Osoby korzystające z czytników ekranu: Nie wiedzą, co wpisać do pola, ponieważ czytnik nie
@@ -899,123 +915,163 @@
 					<li>Osoby z zaburzeniami poznawczymi: Wstępnie wpisany tekst jest mylący, a konieczność jego
 						ręcznego kasowania wywołuje frustrację.</li>
 				</ul>
-				<p><strong>Rekomendacje:</strong> Trzeba upewnić się, że tekst opisu („Poszukiwane słowo:”) jest technicznie połączony z
+				<p><strong>Rekomendacje:</strong> Trzeba upewnić się, że tekst opisu („Poszukiwane słowo:”) jest
+					technicznie połączony z
 					oknem do wpisywania tekstu. Dodatkowo domyślne słowo „szukaj” nie powinno być wpisane na stałe w
 					pole tekstowe. Należy je zastąpić tekstem pomocniczym, który sam zniknie w momencie, gdy użytkownik
 					zacznie pisać lub kliknie w pole.</p>
 
 				<h5>Problem 5: Niewłaściwy kontrast przycisku wyszukiwania (tekst na przycisku oraz tło przycisku).</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 1.4.3 Kontrast (minimalny) (AA), 1.4.11 Kontrast dla treści niebędących
+				<p><strong>Naruszone Kryterium WCAG:</strong> 1.4.3 Kontrast (minimalny) (AA), 1.4.11 Kontrast dla
+					treści niebędących
 					tekstem (AA).</p>
-				<p><strong>Opis problemu:</strong> Tekst na przycisku wyszukiwania oraz tło samego przycisku nie posiadają
+				<p><strong>Opis problemu:</strong> Tekst na przycisku wyszukiwania oraz tło samego przycisku nie
+					posiadają
 					wystarczającego kontrastu w stosunku do otaczających elementów. Biały napis „SZUKAJ” na
 					jasnoturkusowym tle przycisku daje kontrast na poziomie 1,8:1. Powoduje to, że tekst na przycisku
 					jest niemal nieczytelny. Dodatkowo, jasny kolor samego przycisku za słabo odcina się od białego tła
 					formularza, co utrudnia jego lokalizację.</p>
-				<p><strong>Wpływ na użytkowników:</strong> Osoby słabowidzące, z zaburzeniami wzroku i starsze mogą zupełnie nie dostrzec
+				<p><strong>Wpływ na użytkowników:</strong> Osoby słabowidzące, z zaburzeniami wzroku i starsze mogą
+					zupełnie nie dostrzec
 					napisu na przycisku, co uniemożliwia im szybką lokalizację przycisku i upewnienie się, do czego ten
 					element służy.</p>
-				<p><strong>Rekomendacje:</strong> Przycisk „SZUKAJ” jest bardzo słabo widoczny. Jasny napis na jasnym tle sprawia, że
+				<p><strong>Rekomendacje:</strong> Przycisk „SZUKAJ” jest bardzo słabo widoczny. Jasny napis na jasnym
+					tle sprawia, że
 					litery zlewają się ze sobą. Aby każdy użytkownik mógł bez problemu skorzystać z wyszukiwarki, należy
 					zmienić kolor przycisku na ciemniejszy lub zmienić kolor samego napisu na przycisku na ciemny (np.
 					czarny lub ciemnogranatowy).</p>
 
 				<h5>Problem 6: Brak opisu grupy pól w sekcji formularza wyszukiwania– użycie elementu fieldset bez
 					znacznika legend.</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 Informacje i relacje (A), 3.3.2 Etykiety lub instrukcje (A).</p>
-				<p><strong>Opis problemu:</strong> Pierwsza część formularza wyszukiwania została ujęta w znacznik grupujący
-					<code>&lt;fieldset&gt;</code>, jednak nie zawiera on wymaganego znacznika <code>&lt;legend&gt;</code>. Sam element
-					<code>&lt;fieldset&gt;</code> informuje technologie asystujące jedynie o obecności grupy pól, ale bez
-					elementu <code>&lt;legend&gt;</code> grupa ta pozostaje anonimowa. W efekcie użytkownik nie otrzymuje
-					kluczowej informacji o kontekście lub celu danej sekcji formularza.</p>
-				<p><strong>Wpływ na użytkowników:</strong> Osoby korzystające z czytników ekranu słyszą komunikat o wejściu w grupę
+				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 Informacje i relacje (A), 3.3.2 Etykiety lub
+					instrukcje (A).</p>
+				<p><strong>Opis problemu:</strong> Pierwsza część formularza wyszukiwania została ujęta w znacznik
+					grupujący
+					<code>&lt;fieldset&gt;</code>, jednak nie zawiera on wymaganego znacznika
+					<code>&lt;legend&gt;</code>. Sam element
+					<code>&lt;fieldset&gt;</code> informuje technologie asystujące jedynie o obecności grupy pól, ale
+					bez
+					elementu <code>&lt;legend&gt;</code> grupa ta pozostaje anonimowa. W efekcie użytkownik nie
+					otrzymuje
+					kluczowej informacji o kontekście lub celu danej sekcji formularza.
+				</p>
+				<p><strong>Wpływ na użytkowników:</strong> Osoby korzystające z czytników ekranu słyszą komunikat o
+					wejściu w grupę
 					(np. „grupa”), ale nie wiedzą, co ta grupa zawiera ani jakiego obszaru dotyczy, co może
 					prowadzić do dezorientacji podczas wypełniania formularza.</p>
-				<p><strong>Rekomendacje:</strong> Każda wydzielona grupa pól na stronie powinna mieć swój tytuł. Obecnie zastosowano
+				<p><strong>Rekomendacje:</strong> Każda wydzielona grupa pól na stronie powinna mieć swój tytuł. Obecnie
+					zastosowano
 					techniczne grupowanie, ale zapomniano o dodaniu nagłówka tej sekcji. Należy uzupełnić kod o
 					odpowiedni opis (np. „Wyszukiwarka”), aby osoby korzystające z czytników ekranu dokładnie
 					wiedziały, w jakiej części formularza się znajdują.</p>
 
 				<h5>Problem 7: Redundantny atrybut title na przycisku tekstowym.</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 Informacje i relacje (A), 4.1.2 Nazwa, rola, wartość (A).</p>
-				<p><strong>Opis problemu:</strong> Na przycisku wyszukiwania oznaczonym tekstem „SZUKAJ” użyto dodatkowo atrybutu
-					<code>title="Szukaj"</code>. Jest to błąd nadmiarowości (redundancji). Atrybut title ma za zadanie dostarczać
+				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 Informacje i relacje (A), 4.1.2 Nazwa, rola, wartość
+					(A).</p>
+				<p><strong>Opis problemu:</strong> Na przycisku wyszukiwania oznaczonym tekstem „SZUKAJ” użyto dodatkowo
+					atrybutu
+					<code>title="Szukaj"</code>. Jest to błąd nadmiarowości (redundancji). Atrybut title ma za zadanie
+					dostarczać
 					dodatkowych, pomocniczych informacji, a nie powielać widoczną na ekranie treść przycisku. Użycie
 					go w ten sposób powoduje powstawanie zbędnego dymku tekstowego po najechaniu myszką oraz może
-					prowadzić do podwójnego odczytywania nazwy przycisku przez czytniki ekranu.</p>
-				<p><strong>Wpływ na użytkowników:</strong> Zbędny dymek spod kursora, może zasłaniać inne elementy strony pod
+					prowadzić do podwójnego odczytywania nazwy przycisku przez czytniki ekranu.
+				</p>
+				<p><strong>Wpływ na użytkowników:</strong> Zbędny dymek spod kursora, może zasłaniać inne elementy
+					strony pod
 					kursorem. Osoby korzystające z czytników ekranu mogą usłyszeć zbędne powtórzenia komunikatów, co
 					spowalnia i utrudnia korzystanie ze strony.</p>
-				<p><strong>Rekomendacje:</strong> Przycisk posiada już wyraźny napis „SZUKAJ”, więc nie potrzebuje dodatkowego
+				<p><strong>Rekomendacje:</strong> Przycisk posiada już wyraźny napis „SZUKAJ”, więc nie potrzebuje
+					dodatkowego
 					podpisu w dymku. Należy usunąć ukryty w kodzie atrybut, który wyświetla tę powtórzoną
 					informację, aby strona była bardziej przejrzysta i nie dezorientowała użytkowników czytników
 					ekranu.</p>
 
 				<h5>Problem 8: Niewłaściwy kontrast kolorystyczny tekstu na kafelkach tematycznych (12 błędów).</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 1.4.3 Kontrast (minimalny) (AA), 1.4.11 Kontrast dla treści niebędących
+				<p><strong>Naruszone Kryterium WCAG:</strong> 1.4.3 Kontrast (minimalny) (AA), 1.4.11 Kontrast dla
+					treści niebędących
 					tekstem (AA).</p>
-				<p><strong>Opis problemu:</strong> Teksty oraz grafiki informacyjne umieszczone na kolorowych kafelkach w panelu
+				<p><strong>Opis problemu:</strong> Teksty oraz grafiki informacyjne umieszczone na kolorowych kafelkach
+					w panelu
 					bocznym nie posiadają wystarczającego kontrastu w stosunku do swojego tła. Minimalny
 					współczynnik kontrastu wymagany przez WCAG dla standardowego tekstu wynosi 4,5:1 (lub 3:1 dla
 					dużego tekstu). W badanych kafelkach współczynnik ten spada nawet do poziomu 2,9:1, co znacznie
 					utrudnia lub całkowicie uniemożliwia odczytanie treści osobom słabowidzącym.</p>
-				<p><strong>Wpływ na użytkowników:</strong> W trudnych warunkach oświetleniowych (np. przy dużym nasłonecznieniu na
+				<p><strong>Wpływ na użytkowników:</strong> W trudnych warunkach oświetleniowych (np. przy dużym
+					nasłonecznieniu na
 					ekranie telefonu) treść staje się nieczytelna. Osoby słabowidzące oraz starsze: Mogą mieć
 					ogromne trudności z odczytaniem napisów na kafelkach, ponieważ zlewają się one z jaskrawym tłem.
 				</p>
-				<p><strong>Rekomendacje:</strong> Należy zmodyfikować kolory pierwszoplanowe (tekst) oraz kolory tła dla wszystkich
+				<p><strong>Rekomendacje:</strong> Należy zmodyfikować kolory pierwszoplanowe (tekst) oraz kolory tła dla
+					wszystkich
 					12 kafelków bocznych tak, aby ich współczynnik kontrastu wynosił minimum 4,5:1. Zaleca się
 					regularne testowanie kontrastu przy doborze nowej palety kolorów.</p>
 
 				<h5>Problem 9: Niewłaściwy kontrast kolorystyczny linków w menu bocznym.</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 1.4.3 Kontrast (minimalny) (AA), 1.4.1 Użycie koloru (A).</p>
-				<p><strong>Opis problemu:</strong> Tekst linków w menu bocznym posiada zbyt niski kontrast w stosunku do białego tła.
+				<p><strong>Naruszone Kryterium WCAG:</strong> 1.4.3 Kontrast (minimalny) (AA), 1.4.1 Użycie koloru (A).
+				</p>
+				<p><strong>Opis problemu:</strong> Tekst linków w menu bocznym posiada zbyt niski kontrast w stosunku do
+					białego tła.
 					Współczynnik kontrastu wynosi w tym przypadku 3,6:1, podczas gdy minimalny wymóg dla tekstu o
 					standardowym rozmiarze to 4,5:1. Sprawia to, że elementy nawigacyjne są mało czytelne.</p>
-				<p><strong>Wpływ na użytkowników:</strong> W jasnym otoczeniu (np. w pełnym słońcu) napisy na ekranie stają się
+				<p><strong>Wpływ na użytkowników:</strong> W jasnym otoczeniu (np. w pełnym słońcu) napisy na ekranie
+					stają się
 					niemal niewidoczne. Osoby słabowidzące: Mogą mieć duże trudności z odczytaniem nazw
 					poszczególnych pozycji w menu i sprawnym poruszaniem się po strukturze serwisu.</p>
-				<p><strong>Rekomendacje:</strong> Aby menu było czytelne dla wszystkich, należy zmienić kontrast linków bocznych i
+				<p><strong>Rekomendacje:</strong> Aby menu było czytelne dla wszystkich, należy zmienić kontrast linków
+					bocznych i
 					tła na poziomie minimum 4,5:1. Zaleca się także dodanie podkreślenia linków w stanie fokusu oraz
 					po najechaniu myszką (hover, focus), aby dodatkowo wyróżnić je bez użycia samego koloru.</p>
 
 				<h5>Problem 10: Nieprawidłowo użyty atrybut alt dla grafik ozdobnych.</h5>
 				<p><strong>Naruszone Kryterium WCAG:</strong> 1.1.1 Treść nietekstowa (A).</p>
-				<p><strong>Opis problemu:</strong> Wewnątrz kafelków nawigacyjnych znajdują się grafiki o charakterze czysto
+				<p><strong>Opis problemu:</strong> Wewnątrz kafelków nawigacyjnych znajdują się grafiki o charakterze
+					czysto
 					dekoracyjnym. Grafiki te nie wnoszą żadnych nowych informacji, ponieważ ich treść jest już w
 					pełni przekazana przez tekst nagłówka kafelka. Mimo to, przypisano im tekst alternatywny (np.
-					<code>alt="czytelnia"</code>). Powoduje to, że czytniki ekranu odczytują ten opis, co jest zbędne i wprowadza
-					chaos informacyjny.</p>
-				<p><strong>Wpływ na użytkowników:</strong> Osoby korzystające z czytników ekranu słyszą zbędne opisy obrazków, które
+					<code>alt="czytelnia"</code>). Powoduje to, że czytniki ekranu odczytują ten opis, co jest zbędne i
+					wprowadza
+					chaos informacyjny.
+				</p>
+				<p><strong>Wpływ na użytkowników:</strong> Osoby korzystające z czytników ekranu słyszą zbędne opisy
+					obrazków, które
 					nie wnoszą nic do zrozumienia treści strony. Wydłuża to czas potrzebny na zapoznanie się z menu
 					i utrudnia dotarcie do właściwych linków.</p>
-				<p><strong>Rekomendacje:</strong> Obrazki znajdujące się na kafelkach pełnią jedynie funkcję ozdobną i nie zawierają
+				<p><strong>Rekomendacje:</strong> Obrazki znajdujące się na kafelkach pełnią jedynie funkcję ozdobną i
+					nie zawierają
 					żadnych ważnych informacji. W takim przypadku w kodzie strony należy pozostawić pusty opis
 					obrazka. Dzięki temu programy czytające stronę dla osób niewidomych po prostu go pominą, a
 					użytkownik od razu usłyszy najważniejszy tekst.</p>
 
 				<h5>Problem 11: Nieprawidłowa struktura listy (błędne zagnieżdżenie elementów).</h5>
 				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 Informacje i relacje (A).</p>
-				<p><strong>Opis problemu:</strong> Kod strony zawiera błąd strukturalny w budowie list. Znacznik listy <code>&lt;ul&gt;</code>
+				<p><strong>Opis problemu:</strong> Kod strony zawiera błąd strukturalny w budowie list. Znacznik listy
+					<code>&lt;ul&gt;</code>
 					został umieszczony bezpośrednio w innym znaczniku <code>&lt;ul&gt;</code>, bez wymaganego elementu
-					<code>&lt;li&gt;</code>. Taka konstrukcja jest niezgodna ze standardem HTML.</p>
-				<p><strong>Wpływ na użytkowników:</strong> Powoduje to, że czytniki ekranu mogą błędnie ogłaszać liczbę elementów na
+					<code>&lt;li&gt;</code>. Taka konstrukcja jest niezgodna ze standardem HTML.
+				</p>
+				<p><strong>Wpływ na użytkowników:</strong> Powoduje to, że czytniki ekranu mogą błędnie ogłaszać liczbę
+					elementów na
 					liście lub całkowicie pogubić się w strukturze menu, co utrudnia orientację osobom niewidomym.
 					Wprowadza to chaos w nawigacji i sprawia, że poruszanie się po menu jest nielogiczne i męczące.
 				</p>
-				<p><strong>Rekomendacje:</strong> Należy naprawić strukturę list na stronie, aby była zgodna ze standardami HTML.
+				<p><strong>Rekomendacje:</strong> Należy naprawić strukturę list na stronie, aby była zgodna ze
+					standardami HTML.
 					Każda lista powinna zawierać bezpośrednio tylko elementy listy.</p>
 
 				<h5>Problem 12: Brak głównego nagłówka H1 i zaburzona hierarchia nagłówków.</h5>
-				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 - Informacje i relacje (A), 2.4.6 - Nagłówki i etykiety (AA).</p>
-				<p><strong>Opis problemu:</strong> Brak zdefiniowanego nagłówka H1, który informuje o tematyce podstrony. Struktura
+				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 - Informacje i relacje (A), 2.4.6 - Nagłówki i
+					etykiety (AA).</p>
+				<p><strong>Opis problemu:</strong> Brak zdefiniowanego nagłówka H1, który informuje o tematyce
+					podstrony. Struktura
 					nagłówków zaczyna się od poziomu H3 (użytego w panelu bocznym „Pałacowy Pomocnik”), co
 					jest błędem. Nagłówki muszą tworzyć logiczną, schodkową strukturę (H1 -> H2 -> H3).</p>
-				<p><strong>Wpływ na użytkowników:</strong> Osoby niewidome korzystające z czytników ekranu często przeglądają stronę,
+				<p><strong>Wpływ na użytkowników:</strong> Osoby niewidome korzystające z czytników ekranu często
+					przeglądają stronę,
 					generując listę nagłówków. Brak H1 sprawia, że nie wiedzą, na jakiej podstronie się znajdują.
 					Zaburzona hierarchia (start od H3) utrudnia zrozumienie ważności poszczególnych sekcji serwisu.
 				</p>
-				<p><strong>Rekomendacje:</strong> Należy dodać nagłówek H1 o treści „Wyszukiwarka” na początku głównej treści strony.
+				<p><strong>Rekomendacje:</strong> Należy dodać nagłówek H1 o treści „Wyszukiwarka” na początku głównej
+					treści strony.
 					Należy również poprawić poziomy pozostałych nagłówków, aby zachować ciągłość (np. zmienić
 					nagłówki w
 					kafelkach z H3 na H2, jeśli nie ma nagłówka pośredniego).</p>
@@ -1023,30 +1079,37 @@
 				<h5>Problem 13: Puste paragrafy – wykorzystywanie elementów tekstowych do celów prezentacyjnych.
 				</h5>
 				<p><strong>Naruszone Kryterium WCAG:</strong> 1.3.1 Informacje i relacje (A).</p>
-				<p><strong>Opis problemu:</strong> W kodzie strony pomiędzy kafelkami nawigacyjnymi umieszczono puste znaczniki
-					paragrafów <code>&lt;p&gt;&lt;/p&gt;</code>. Służą one wyłącznie celom wizualnym – wymuszają odstęp (margines) pomiędzy
+				<p><strong>Opis problemu:</strong> W kodzie strony pomiędzy kafelkami nawigacyjnymi umieszczono puste
+					znaczniki
+					paragrafów <code>&lt;p&gt;&lt;/p&gt;</code>. Służą one wyłącznie celom wizualnym – wymuszają odstęp
+					(margines) pomiędzy
 					kolejnymi
 					elementami. Taka praktyka powoduje powstawanie zbędnego kodu i wprowadza niepotrzebny szum
 					informacyjny.</p>
-				<p><strong>Wpływ na użytkowników:</strong> Urządzenia asystujące mogą odczytywać te elementy jako „pusty”, co
+				<p><strong>Wpływ na użytkowników:</strong> Urządzenia asystujące mogą odczytywać te elementy jako
+					„pusty”, co
 					niepotrzebnie przerywa płynność zapoznawania się z treścią strony i dekoncentruje użytkownika.
 					Dodatkowo niekontrolowane w ten sposób odstępy mogą różnie renderować się w różnych
 					przeglądarkach, zaburzając spójność wizualną strony.</p>
-				<p><strong>Rekomendacje:</strong> Do robienia odstępów i przerw na stronie nie należy używać pustych linijek tekstu
+				<p><strong>Rekomendacje:</strong> Do robienia odstępów i przerw na stronie nie należy używać pustych
+					linijek tekstu
 					ani pustych paragrafów w kodzie. Wszystkie odległości pomiędzy blokami powinny być ustawione w
 					stylach wizualnych strony, a puste elementy należy usunąć.</p>
 
 				<h5>Problem 14: Niewłaściwy kontrast kolorystyczny linku powrotu w ścieżce nawigacyjnej.</h5>
 				<p><strong>Naruszone Kryterium WCAG:</strong> 1.4.3 Kontrast (minimalny) (AA).</p>
-				<p><strong>Opis problemu:</strong> Tekst linku „Strona główna” w ścieżce powrotu (breadcrumbs) ma kolor jasnoszary,
+				<p><strong>Opis problemu:</strong> Tekst linku „Strona główna” w ścieżce powrotu (breadcrumbs) ma kolor
+					jasnoszary,
 					który na białym tle strony jest bardzo słabo widoczny. Współczynnik kontrastu wynosi jedynie
 					2,1:1, podczas gdy minimalny wymóg dla tekstu o standardowym rozmiarze to 4,5:1. Tak niski
 					kontrast utrudnia odczytanie ścieżki powrotnej i powrót do strony głównej.</p>
-				<p><strong>Wpływ na użytkowników:</strong> Przy słabszym ekranie lub niekorzystnym oświetleniu tekst staje się
+				<p><strong>Wpływ na użytkowników:</strong> Przy słabszym ekranie lub niekorzystnym oświetleniu tekst
+					staje się
 					całkowicie nieczytelny. Osoby słabowidzące oraz
 					starsze mogą w ogóle nie zauważyć tego elementu nawigacyjnego, przez co tracą informację o tym,
 					w jakim miejscu serwisu aktualnie się znajdują.</p>
-				<p><strong>Rekomendacje:</strong> Kolor tekstu linku musi zostać zmieniony na ciemniejszy, tak aby w zestawieniu z
+				<p><strong>Rekomendacje:</strong> Kolor tekstu linku musi zostać zmieniony na ciemniejszy, tak aby w
+					zestawieniu z
 					białym tłem osiągnąć współczynnik kontrastu na poziomie minimum 4,5:1.</p>
 			</div>
 
@@ -1065,7 +1128,8 @@
 				techniczne oraz
 				odnośniki do dobrych praktyk W3C. Jako priorytetowe działania wskazuję:</p>
 			<ul>
-				<li>Uproszczenie kodu: usunięcie pustych elementów prezentacyjnych (<code>&lt;p&gt;,&lt;/p&gt;</code>) na rzecz
+				<li>Uproszczenie kodu: usunięcie pustych elementów prezentacyjnych (<code>&lt;p&gt;,&lt;/p&gt;</code>)
+					na rzecz
 					czystych
 					stylów
 					CSS, co przyspieszy renderowanie i poprawi strukturę DOM.</li>
@@ -1102,9 +1166,9 @@
 
 		<section>
 			<h2 id="zrodla" class="zrodla">Źródła/metodyka i narzędzia</h2>
-		
+
 			<ul class="zrodla-ul">
-				
+
 				<li class="zrodla-li-wrapper">
 					<details class="zrodla-li">
 						<summary>
@@ -1119,7 +1183,7 @@
 						</div>
 					</details>
 				</li>
-		
+
 				<li class="zrodla-li-wrapper">
 					<details class="zrodla-li">
 						<summary>
@@ -1127,15 +1191,18 @@
 						</summary>
 						<div class="content">
 							<ul>
-								<li>FELKE-MORRIS, Terry. <em>Web Design z HTML5 i CSS3. Technologie frontendowe od podstaw</em>. Wydawnictwo Helion</li>
-								<li>JENDRZEJEWSKI, Rafał. <em>WCAG Dostępność cyfrowa stron internetowych i aplikacji</em>. Wydawnictwo Helion</li>
-								<li>ROMAN, Adam, STAPP, Lucjan. <em>Certyfikowany tester ISTQB. Poziom podstawowy</em>. Wydawnictwo Helion</li>
+								<li>FELKE-MORRIS, Terry. <em>Web Design z HTML5 i CSS3. Technologie frontendowe od
+										podstaw</em>. Wydawnictwo Helion</li>
+								<li>JENDRZEJEWSKI, Rafał. <em>WCAG Dostępność cyfrowa stron internetowych i
+										aplikacji</em>. Wydawnictwo Helion</li>
+								<li>ROMAN, Adam, STAPP, Lucjan. <em>Certyfikowany tester ISTQB. Poziom podstawowy</em>.
+									Wydawnictwo Helion</li>
 								<li>SMILGIN, Radosław. <em>Praktyka testowania</em>. Wydawnictwo PWN</li>
 							</ul>
 						</div>
 					</details>
 				</li>
-		
+
 				<li class="zrodla-li-wrapper">
 					<details class="zrodla-li">
 						<summary>
@@ -1144,39 +1211,38 @@
 						<div class="content">
 							<ul>
 								<li>Narzędzia i walidatory:</li>
-								<li>Baza wiedzy i edukacja: Materiały szkoleniowe Szkoły Dostępności Cyfrowej Certes.</li>
-								<li>Zasoby online: <a href="https://lepszyweb.pl">LepszyWeb</a>, <a href="https://www.w3.org">The World Wide Web Consortium (W3C)</a></li>
+								<li>Baza wiedzy i edukacja: Materiały szkoleniowe Szkoły Dostępności Cyfrowej Certes.
+								</li>
+								<li>Zasoby online: <a href="https://lepszyweb.pl">LepszyWeb</a>, <a
+										href="https://www.w3.org">The World Wide Web Consortium (W3C)</a></li>
 							</ul>
 						</div>
 					</details>
 				</li>
-		
+
 			</ul>
 		</section>
 	</main>
 
 	<footer>
-		<h3 id="kontakt">Kontakt</h3>
+		<h2 id="kontakt">Kontakt</h2>
 		<address>
 			<p>E-mail:<a href="mailto:chaberskapatrycja02@gmail.com">chaberskapatrycja02@gmail.com</a></p>
 		</address>
-		<h3>GitHub:</h3>
-		<a href="https://github.com/chaberpatry01/portfolio-audyt" target="_blank" rel="noopener noreferrer"
-			aria-label="Zobacz kod źródłowy mojego portfolio na GitHubie (otwiera się w nowej karcie)">Zobacz kod
-			źródłowy na GitHubie</a>
+		<h2>GitHub</h2>
+		<a href="https://github.com/chaberpatry01/portfolio-audyt" target="_blank" rel="noopener noreferrer">Zobacz kod
+			źródłowy na GitHubie <span class="sr-only"> (otwiera się w nowej karcie)</span> </a>
 
-		<h3>CV:</h3>
-		<a href="patrycja_chaberska_cv_testerka_wcag.pdf" target="_blank" rel="noopener"
-			aria-label="Zobacz moje CV (plik PDF, otwiera się w nowej karcie)" title="Otwórz PDF w nowej karcie">Zobacz
-			w PDF</a>
+		<h2>CV</h2>
+		<a href="patrycja_chaberska_cv_testerka_wcag.pdf" target="_blank" rel="noopener">Zobacz
+			w PDF <span class="sr-only"> (otwiera się w nowej karcie)</span></a>
 
 		<p>&copy; 2026 Patrycja Chaberska. Dokumentacja portfolio stworzona zgodnie z wytycznymi ISTQB oraz WCAG 2.1.
 		</p>
 		<p>Wersja: 3.2.0 (Aktualizacja: 13.05.2026)</p>
 		<p>Pierwsza publikacja: luty 2026</p>
 
-		<a href="#main" class="back-to-top" aria-label="Wróć na początek strony" title="Wróć na górę"><img
-			src="assets/up_arrow.svg" alt="" width="48" height="48"></a>
+		<a href="#main" class="back-to-top"> <img src="assets/up_arrow.svg" alt="Wróć na początek strony" width="48" height="48"></a>
 	</footer>
 </body>
 

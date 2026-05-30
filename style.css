@@ -164,6 +164,17 @@ footer {
     font-size: 0.9rem;
 }
 
+footer h2 {
+    font-size: 1.4rem;
+    color: #00438f;
+    border-bottom: 1px solid #949494;
+    padding-bottom: 3px;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-left: none;
+    padding-left: 0;
+}
+
 .header-full { width: 100%; padding-top: 1rem;}
 .logo-group { display: flex; align-items: center; gap: 15px; padding-top: 1rem; }
 .logo { width: 75px; height: auto; }
