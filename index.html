@@ -91,9 +91,9 @@
 					</ul>
 				</li>
 			</ul>
-			<div class="table-container">
-				<table tabindex="0">
-					<caption><b>Tabela 1:</b> Techniki testowania</caption>
+			<div class="table-container" tabindex="0" aria-labelledby="table-caption">
+				<table>
+					<caption id="table-caption"><b>Tabela 1:</b> Techniki testowania</caption>
 					<thead>
 						<tr>
 							<th scope="col">Obiekt/moduł</th>
@@ -104,18 +104,18 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td rowspan="3">Darmowa dostawa</td>
-							<td rowspan="3">Klasy równoważności EP i wartości brzegowych (BVA)</td>
-							<td>Klasa: darmowa dostawa: 150,00 zł, 150,01 zł</td>
-							<td rowspan="3">
+							<td>Darmowa dostawa</td>
+							<td>Klasy równoważności EP i wartości brzegowych (BVA)</td>
+							<td>
+							<ul>
+								<li>Klasa: darmowa dostawa: 150,00 zł, 150,01 zł</li>
+								<li>Klasa: płatna dostawa: 149,99 zł</li>
+								<li>Wartość brzegowa: pusty koszyk 0 zł</li>
+							</ul>
+							</td>
+							<td>
 								<a href="#st1">Scenariusz Testowy 1</a>
 							</td>
-						</tr>
-						<tr>
-							<td>Klasa: płatna dostawa: 149,99 zł</td>
-						</tr>
-						<tr>
-							<td>Wartość brzegowa: pusty koszyk 0 zł</td>
 						</tr>
 						<tr>
 							<td>Zarządzanie koszykiem</td>
@@ -169,9 +169,9 @@
 					precyzyjnie dolną granicę dostawy. W dalszej fazie projektu, scenariusz zostanie rozbudowany o
 					weryfikację w oparciu o ceny realnych produktów, naliczanie gratisów oraz integrację z kuponami
 					zniżkowymi.</p>
-				<div class="table-container">
-					<table tabindex="0">
-						<caption><b>Tabela 2:</b> Przypadki testowe wysokiego poziomu dla ST-1</caption>
+				<div class="table-container" tabindex="0" aria-labelledby="table-caption-2">
+					<table>
+						<caption id="table-caption-2"><b>Tabela 2:</b> Przypadki testowe wysokiego poziomu dla ST-1</caption>
 						<thead>
 							<tr>
 								<th scope="col">ID przypadku testowego</th>
@@ -239,9 +239,9 @@
 					pozwala na sprawdzenie logiki systemu poprawności przejść oraz poprawnego przeliczania wartości
 					zamówienia. Pozwala również ocenić, czy proces od początku do końca działa spójnie i spełnia swoją
 					funkcjonalność.</p>
-				<div class="table-container">
-					<table tabindex="0">
-						<caption><b>Tabela 3:</b> Scenariusz Testowy 2 jako logiczny powiązany zbiór przypadków
+				<div class="table-container" tabindex="0" aria-labelledby="table-caption-3">
+					<table>
+						<caption id="table-caption-3"><b>Tabela 3:</b> Scenariusz Testowy 2 jako logiczny powiązany zbiór przypadków
 							testowych
 							end-to-end.</caption>
 						<thead>
@@ -346,9 +346,9 @@
 					klientów: zakup przez użytkownika niezalogowanego, z opcją płatnej dostawy. Weryfikuje, czy
 					konkretne kroki prowadzą do zamierzonego, pozytywnego dla użytkownika zakończenia. Scenariusz
 					zostanie uzupełniony o dodatkowe sytuacje wyjątkowe i obsługę błędów.</p>
-				<div class="table-container">
-					<table tabindex="0">
-						<caption><b>Tabela 4:</b> Scenariusz testowy 3 jako zbiór przypadków użycia- obejmuje scenariusz
+				<div class="table-container" tabindex="0" aria-labelledby="table-caption-4">
+					<table>
+						<caption id="table-caption-4"><b>Tabela 4:</b> Scenariusz testowy 3 jako zbiór przypadków użycia- obejmuje scenariusz
 							główny,
 							sytuacje alternatywne i obsługę błędów.</caption>
 						<thead>
@@ -362,9 +362,7 @@
 						<tbody>
 							<tr>
 								<td>
-									<a href="#pt10">
-										<abbr title="Przypadek Testowy 10">PT-10</abbr>
-									</a>
+									<a href="#pt10" aria-label="Przypadek Testowy 10 (PT-10)">PT-10</a>
 								</td>
 								<td>Proces zakupowy dla niezalogowanego użytkownika (płatna dostawa)</td>
 								<td>Użytkownik nieposiadający konta.</td>
@@ -380,9 +378,7 @@
 							</tr>
 							<tr>
 								<td>
-									<a href="#pt12">
-										<abbr title="Przypadek Testowy 12">PT-12</abbr>
-									</a>
+									<a href="#pt12" aria-label="Przypadek Testowy 12 (PT-12)">PT-12</a>
 								</td>
 								<td>Walidacja kodu pocztowego- format niezgodny ze wzorcem 00-000</td>
 								<td>Produkt w koszyku; otwarty formularz dostawy.</td>
@@ -398,43 +394,31 @@
 			<h2 id="przypadki">Przypadki testowe</h2>
 			<article>
 				<h3 id="pt10"><abbr title="Przypadek Testowy 10">PT-10: </abbr>Scenariusz główny</h3>
-				<div class="table-container">
-					<table tabindex="0">
-						<caption><b>Tabela 5:</b> Przypadek testowy 10 - linearny scenariusz główny zakończony sukcesem.
+				<dl>
+                    <dt><b>Nazwa</b></dt>
+                    <dd>Proces zakupowy dla niezalogowanego użytkownika (płatna dostawa)</dd>
+                    
+                    <dt><b>Opis</b></dt>
+                    <dd>Przypadek testowy na podstawie przypadku użycia scenariusza głównego, ścieżka pozytywna, pokryte kroki 1-7.</dd>
+                    
+                    <dt><b>Warunki wstępne</b></dt>
+                    <dd>Użytkownik znajduje się na stronie <b>www.wlep.pro</b>; w koszyku znajduje się dowolny produkt; suma koszyka nie przekracza 150,00 zł (warunek darmowej dostawy).</dd>
+                    
+                    <dt><b>Aktorzy</b></dt>
+                    <dd>Niezalogowany użytkownik, system wlep.pro.</dd>
+                </dl>
+				<div class="table-container" tabindex="0" role="region" aria-labelledby="table-caption-5">
+					<table>
+						<caption id="table-caption-5"><b>Tabela 5:</b> Przypadek testowy 10 - linearny scenariusz główny zakończony sukcesem.
 						</caption>
 						<thead>
-							<tr>
-								<th scope="col">Atrybut</th>
-								<th scope="col" colspan="2">Szczegóły</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<th scope="row">Nazwa</th>
-								<td colspan="2">Proces zakupowy dla niezalogowanego użytkownika (płatna dostawa)</td>
-							</tr>
-							<tr>
-								<th scope="row">Opis</th>
-								<td colspan="2">Przypadek testowy na podstawie przypadku użycia scenariusza głównego,
-									ścieżka pozytywna, pokryte kroki 1-7.</td>
-							</tr>
-							<tr>
-								<th scope="row">Warunki wstępne</th>
-								<td colspan="2">Użytkownik znajduje się na stronie <b>www.wlep.pro</b>; w koszyku
-									znajduje się dowolny produkt; suma koszyka nie przekracza 150,00 zł (warunek
-									darmowej
-									dostawy).</td>
-							</tr>
-							<tr>
-								<th scope="row">Aktorzy</th>
-								<td colspan="2">Niezalogowany użytkownik, system wlep.pro.</td>
-							</tr>
 							<tr>
 								<th scope="col">Lp.</th>
 								<th scope="col">Kroki użytkownika</th>
 								<th scope="col">Oczekiwane rezultaty systemu</th>
 							</tr>
-
+						</thead>
+						<tbody>
 							<tr>
 								<th scope="row">1.</th>
 								<td>Klika w ikonę koszyka.</td>
@@ -470,27 +454,25 @@
 								<td>Klika w przycisk &lt;Zamawiam i płacę&gt;.</td>
 								<td>Przekierowuje do strony złożonego zamówienia z sukcesem.</td>
 							</tr>
-							<tr>
-								<th scope="row">Warunki końcowe</th>
-								<td colspan="2">Poprawnie sfinalizowany zakup; zostaje wyświetlona strona z
-									podsumowaniem
-									zamówienia; na adres mailowy zostaje wysłany mail z potwierdzeniem zamówienia;
-									koszyk
-									jest pusty.</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
+				<dl>
+                    <dt><b>Warunki końcowe</b></dt>
+                    <dd>Poprawnie sfinalizowany zakup; zostaje wyświetlona strona z podsumowaniem zamówienia; na adres mailowy zostaje wysłany mail z potwierdzeniem zamówienia; koszyk jest pusty.</dd>
+                </dl>
 			</article>
 
 			<article>
 				<h3 id="pt12"><abbr title="Przypadek Testowy 12">PT-12: </abbr>Walidacja kodu pocztowego – format
 					niezgodny ze wzorcem 00-000</h3>
-				<p><b>Wideo 1: </b>Dokumentacja przypadku testowego PT-12 w systemie Xray. Przykład obsługi
+				<figure>
+					<figcaption id="video-caption">
+						<b>Wideo 1: </b>Dokumentacja przypadku testowego PT-12 w systemie Xray. Przykład obsługi
 					błędu. Zobacz powiązany błąd:
-					<a href="#bug01">BUG-01: Brak walidacji formatu kodu pocztowego</a>.
-				</p>
-				<video controls preload="metadata" poster="assets/miniatura.png" aria-describedby="video-description">
+					<a href="#bug01">BUG-01: Brak walidacji formatu kodu pocztowego</a>
+					</figcaption>
+				<video controls preload="metadata" poster="assets/miniatura.png" aria-labelledby="video-caption" aria-describedby="video-description">
 					<source src="assets/nagranie_walidacja_kodu.mp4" type="video/mp4">
 				</video>
 				<p id="video-description"><b>Opis wideo 1:</b> Nagranie przedstawia konfigurację testu manualnego w
@@ -499,41 +481,34 @@
 					numer telefonu)
 					oraz precyzyjnie określony rezultat oczekiwany dla negatywnego scenariusza walidacji kodu
 					pocztowego.</p>
+				</figure>
 			</article>
 
 			<article>
 				<h3 id="pt13">PT-13: Weryfikacja responsywności (RWD)</h3>
-				<div class="table-container">
-					<table tabindex="0">
-						<caption><b>Tabela 6:</b> Przykład przypadku testowego jako karty dla testów eksploracyjnych,
+				<dl>
+                    <dt><b>Opis i cel:</b></dt>
+                    <dd>Weryfikacja responsywności, poprawności wyświetlania interfejsu oraz użyteczności strony głównej i modułu koszyka na urządzeniach mobilnych.</dd>
+                    <dt><b>Oczekiwany rezultat:</b></dt>
+                    <dd>
+                        <ul>
+                            <li>Elementy i treść strony są dostosowane do rozmiaru ekranu.</li>
+                            <li>Widoczne i poprawnie działające menu "hamburger".</li>
+                            <li>Intuicyjność nawigacji.</li>
+                            <li>Przyciski i linki łatwe do kliknięcia (odpowiedni rozmiar pól dotykowych min. 44x44 px).</li>
+                            <li>Poprawne skalowanie obrazów i optymalny czas ładowania.</li>
+                        </ul>
+                    </dd>
+					<dt><b>Warunki wstępne:</b></dt>
+                    <dd>Uruchomiona przeglądarka z trybem narzędzi deweloperskich; dostęp do urządzenia mobilnego z dotykowym wyświetlaczem.</dd>
+                </dl>
+				<div class="table-container" tabindex="0" aria-labelledby="table-caption-6">
+					<table>
+						<caption id="table-caption-6"><b>Tabela 6:</b> Przykład przypadku testowego jako karty dla testów eksploracyjnych,
 							która
 							posłuży
 							do przyszłych sesji.</caption>
-						<tbody>
-							<tr>
-								<th scope="row">Opis i cel:</th>
-								<td colspan="4">Weryfikacja responsywności, poprawności wyświetlania interfejsu oraz
-									użyteczności strony głównej i modułu koszyka na urządzeniach mobilnych.</td>
-							</tr>
-							<tr>
-								<th scope="row">Oczekiwany rezultat:</th>
-								<td colspan="4">
-									<ul>
-										<li>Elementy i treść strony są dostosowane do rozmiaru ekranu.</li>
-										<li>Widoczne i poprawnie działające menu "hamburger".</li>
-										<li>Intuicyjność nawigacji.</li>
-										<li>Przyciski i linki łatwe do kliknięcia (odpowiedni rozmiar pól dotykowych
-											min.
-											44x44 px).</li>
-										<li>Poprawne skalowanie obrazów i optymalny czas ładowania.</li>
-									</ul>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">Warunki wstępne:</th>
-								<td colspan="4">Uruchomiona przeglądarka z trybem narzędzi deweloperskich; dostęp do
-									urządzenia mobilnego z dotykowym wyświetlaczem.</td>
-							</tr>
+						<thead>
 							<tr>
 								<th scope="col">Typ testu</th>
 								<th scope="col">Data</th>
@@ -541,6 +516,8 @@
 								<th scope="col">Wynik</th>
 								<th scope="col">Uwagi</th>
 							</tr>
+						</thead>
+						<tbody>
 							<tr>
 								<td>Mobilny</td>
 								<td>05.01.26</td>
@@ -552,16 +529,13 @@
 									dla
 									zachowania wizualnej spójności aplikacji.</td>
 							</tr>
-							<tr>
-								<th scope="row">Podsumowanie sesji:</th>
-								<td colspan="4">Testy potwierdziły responsywność głównej strony i modułu koszyka.
-									Aplikacja
-									działa płynnie, jej elementy poprawnie się skalują, jednak znaleziono pole do
-									optymalizacji, które zostało zgłoszone jako sugestia do poprawy.</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
+				<dl>
+                    <dt><b>Podsumowanie sesji:</b></dt>
+                    <dd>Testy potwierdziły responsywność głównej strony i modułu koszyka. Aplikacja działa płynnie, jej elementy poprawnie się skalują, jednak znaleziono pole do optymalizacji, które zostało zgłoszone jako sugestia do poprawy.</dd>
+                </dl>
 				<figure>
 					<img src="assets/weryfikacja_responsywnosci.png"
 						alt="Zrzuty ekranu porównujące widok desktopowy z mobilnym. Wersja mobilna pokazuje adaptację układu strony i obecność menu hamburger.">
@@ -637,9 +611,9 @@
 
 			<article>
 				<h3>Tabela wyników</h3>
-				<div class="table-container">
-					<table tabindex="0">
-						<caption><b>Tabela 7: </b>Zestawienie wyników z wykonania testów z dnia 10.01.2026.</caption>
+				<div class="table-container" tabindex="0" aria-labelledby="table-caption-7">
+					<table>
+						<caption id="table-caption-7"><b>Tabela 7: </b>Zestawienie wyników z wykonania testów z dnia 10.01.2026.</caption>
 						<thead>
 							<tr>
 								<th scope="col">Przypadek testowy</th>
