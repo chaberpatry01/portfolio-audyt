@@ -582,4 +582,13 @@ summary:focus-visible .zrodla-li,
         width: 92% !important;
         margin: 0 auto !important;
     }
+
+    caption {
+        font-size: 0.9rem !important;
+        color: #444 !important;
+        text-align: center;
+        line-height: 1.4;
+        font-style: normal;
+        padding: 0.5rem 0;
+    }
 }
